@@ -460,7 +460,7 @@ export default function Home() {
             <div>
               <h2 className="text-4xl lg:text-5xl font-bold text-primary mb-4">Shop Kelly Praise</h2>
               <p className="text-lg text-foreground/70 max-w-2xl">
-                Explore our full collection of Kintsugi kits, supplies, and artisan jewellery pieces crafted with intention and spiritual meaning.
+                Our Kintsugi DIY Repair Kits include everything you need — non-toxic powder, epoxy glue, brushes, a practice bowl, and a step-by-step manual. Enough for up to 3 repairs.
               </p>
             </div>
             <ShoppingBag className="w-10 h-10 text-accent opacity-20 hidden md:block" />
@@ -468,8 +468,8 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {shopItems.map(item => (
               <Card key={item.id} className="overflow-hidden hover:shadow-lg transition-all duration-300">
-                <div className="h-48 overflow-hidden bg-gray-50 flex items-center justify-center">
-                  <img src={item.img} alt={item.name} className="max-w-full max-h-full object-contain" />
+                <div className="h-64 overflow-hidden bg-gray-50">
+                  <img src={item.img} alt={item.name} className="w-full h-full object-cover" />
                 </div>
                 <CardContent className="pt-5">
                   <div className="flex gap-1 mb-2">
