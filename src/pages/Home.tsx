@@ -510,7 +510,7 @@ export default function Home() {
           <div className="rounded-xl border border-border overflow-hidden bg-white shadow-sm">
             <Cal
               namespace="cracksandhealing"
-              calLink="cracksandhealing/90min"
+              calLink="cracksandhealing/120min"
               style={{ width: '100%', height: '700px', overflow: 'scroll' }}
               config={{ layout: 'month_view', theme: 'light' }}
             />
