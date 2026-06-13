@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <rect width="1200" height="630" fill="#1a3a52"/>
+  <!-- Subtle gold crack lines background -->
+  <path d="M80 180 L160 280 L130 370 L200 480" stroke="#e8b75a" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.18"/>
+  <path d="M160 100 L220 180 L200 240" stroke="#e8b75a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.12"/>
+  <path d="M1050 150 L980 260 L1010 350 L950 450" stroke="#e8b75a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.15"/>
+  <!-- Gold divider line -->
+  <line x1="100" y1="400" x2="1100" y2="400" stroke="#e8b75a" stroke-width="1" opacity="0.3"/>
+  <!-- Brand mark circle -->
+  <circle cx="180" cy="280" r="90" fill="none" stroke="#e8b75a" stroke-width="1.5" opacity="0.25"/>
+  <circle cx="180" cy="280" r="72" fill="#e8b75a" opacity="0.08"/>
+  <text x="180" y="298" font-family="Georgia, serif" font-size="44" font-weight="700" fill="#e8b75a" text-anchor="middle" opacity="0.9">C&amp;H</text>
+  <!-- Main text -->
+  <text x="600" y="240" font-family="Georgia, serif" font-size="72" font-weight="700" fill="white" text-anchor="middle">Cracks &amp; Healing</text>
+  <text x="600" y="310" font-family="Georgia, serif" font-size="32" fill="#e8b75a" text-anchor="middle">Kintsugi DIY Repair Kits &amp; Sessions</text>
+  <text x="600" y="365" font-family="Georgia, serif" font-size="22" fill="white" text-anchor="middle" opacity="0.65">Lagos, Nigeria · cracksandhealing.com</text>
+  <!-- Tagline -->
+  <text x="600" y="450" font-family="Georgia, serif" font-size="20" font-style="italic" fill="#e8b75a" text-anchor="middle" opacity="0.8">"Wholeness doesn't mean imperfections — it means no part left out."</text>
+</svg>
