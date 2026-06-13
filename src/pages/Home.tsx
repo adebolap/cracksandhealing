@@ -7,6 +7,8 @@ import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
 import { Mail, Phone, MapPin, Star, Sparkles, Heart, Users, ShoppingBag, MessageCircle, Gem, HeartHandshake, Building2, Flame } from 'lucide-react'
+import Cal, { getCalApi } from '@calcom/embed-react'
+import { useEffect } from 'react'
 
 const testimonials = [
   {
@@ -91,6 +93,13 @@ export default function Home() {
   const [form, setForm] = useState({ name: '', email: '', message: '' })
   const [submitting, setSubmitting] = useState(false)
   const [navOpen, setNavOpen] = useState(false)
+
+  useEffect(() => {
+    (async () => {
+      const cal = await getCalApi({ namespace: 'cracksandhealing' })
+      cal('ui', { theme: 'light', hideEventTypeDetails: false, layout: 'month_view' })
+    })()
+  }, [])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }))
@@ -490,26 +499,38 @@ export default function Home() {
 
       {/* Booking */}
       <section id="booking" className="py-16 bg-white border-t border-border">
-        <div className="container max-w-2xl mx-auto text-center">
-          <h2 className="text-4xl lg:text-5xl font-bold text-primary mb-4">Book a Session</h2>
-          <p className="text-lg text-foreground/70 mb-10">
-            Join us for an immersive Kintsugi experience. Sessions run Saturdays &amp; Sundays, May–November 2026. All materials, expert instruction, and your take-home ceramic piece included.
-          </p>
-          <div className="bg-accent/5 border border-accent/20 rounded-2xl p-10 flex flex-col items-center gap-6">
-            <p className="text-foreground/70 text-base max-w-md">
-              To reserve your spot, send us a message on WhatsApp with your preferred date and package. We'll confirm availability and send your deposit link.
+        <div className="container">
+          <div className="max-w-2xl mx-auto text-center mb-10">
+            <h2 className="text-4xl lg:text-5xl font-bold text-primary mb-4">Book a Session</h2>
+            <p className="text-lg text-foreground/70">
+              Join us for an immersive Kintsugi experience. Sessions run Saturdays &amp; Sundays, May–November 2026. All materials, expert instruction, and your take-home ceramic piece included.
             </p>
-            <a
-              href="https://wa.me/2348113993291?text=Hi%20Cracks%20%26%20Healing%2C%20I%27d%20like%20to%20book%20a%20session.%20Please%20share%20available%20dates."
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button size="lg" className="bg-green-500 hover:bg-green-600 text-white text-base px-8 py-4">
-                <MessageCircle className="w-5 h-5 mr-2" />
-                Book via WhatsApp
-              </Button>
-            </a>
-            <p className="text-xs text-muted-foreground">50% non-refundable deposit required to confirm your booking.</p>
+          </div>
+
+          <div className="rounded-xl border border-border overflow-hidden bg-white shadow-sm">
+            <Cal
+              namespace="cracksandhealing"
+              calLink="cracksandhealing/90min"
+              style={{ width: '100%', height: '700px', overflow: 'scroll' }}
+              config={{ layout: 'month_view', theme: 'light' }}
+            />
+          </div>
+
+          <div className="mt-6 text-center space-y-2">
+            <p className="text-sm text-muted-foreground">
+              After booking you'll be redirected to complete payment via Paystack. Your spot is confirmed once payment is received.
+            </p>
+            <p className="text-sm text-muted-foreground">
+              Prefer to book directly?{' '}
+              <a
+                href="https://wa.me/2348113993291?text=Hi%20Cracks%20%26%20Healing%2C%20I%27d%20like%20to%20book%20a%20session."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-accent font-semibold hover:underline"
+              >
+                Message us on WhatsApp
+              </a>
+            </p>
           </div>
         </div>
       </section>
