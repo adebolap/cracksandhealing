@@ -1,12 +1,12 @@
 # Cracks & Healing Landing Page
 
-A responsive static landing page for the Cracks & Healing community, built from the provided Facebook-content brief. The page highlights the mission, support pillars, payment guidance, booking flow, community promise, and a clear email signup call to action.
+A responsive static landing page for the Cracks & Healing community, built from the provided Facebook-content brief. The page highlights the mission, support pillars, community promise, and a clear email signup call to action.
 
 ## Files
 
 - `index.html` — page content and semantic structure
 - `styles.css` — responsive visual design
-- `script.js` — mobile navigation, dynamic footer year, and signup feedback
+- `script.js` — mobile navigation and dynamic footer year
 
 ## Preview
 
