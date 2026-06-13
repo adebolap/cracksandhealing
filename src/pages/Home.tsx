@@ -42,14 +42,14 @@ const shopItems = [
     id: 1,
     name: 'Kintsugi DIY Repair Kit — Gold',
     price: '₦42,000',
-    img: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663513933452/fWNnRpeZbww7L9TXKj2SnP/626988302_17924370186230222_8444082599227681296_n_be4bd3e5.jpg',
+    img: 'https://www.kellypraise.com/cdn/shop/files/9496B945-DEA4-41F8-B40F-06B5F624D948.jpg?v=1731190498&width=800',
     link: 'https://www.kellypraise.com/products/kitsungi-diy-repair-kit?variant=46058959569141',
   },
   {
     id: 2,
     name: 'Kintsugi DIY Repair Kit — Silver',
     price: '₦42,000',
-    img: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663513933452/fWNnRpeZbww7L9TXKj2SnP/625055820_17924012304230222_6843343957473948960_n_b77a6906.jpg',
+    img: 'https://www.kellypraise.com/cdn/shop/files/B0B2C2B8-007D-47AC-9F56-689164B4FB60.jpg?v=1731190542&width=800',
     link: 'https://www.kellypraise.com/products/kitsungi-diy-repair-kit',
   },
 ]
@@ -495,7 +495,7 @@ export default function Home() {
           <div className="max-w-2xl mx-auto text-center mb-10">
             <h2 className="text-4xl lg:text-5xl font-bold text-primary mb-4">Book a Session</h2>
             <p className="text-lg text-foreground/70">
-              Join us for an immersive Kintsugi experience. Sessions run Saturdays &amp; Sundays, May–November 2026. All materials, expert instruction, and your take-home ceramic piece included.
+              Join us for an immersive Kintsugi experience. Sessions run Saturdays only, May–November 2026. All materials, expert instruction, and your take-home ceramic piece included.
             </p>
           </div>
 
