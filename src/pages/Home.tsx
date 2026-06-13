@@ -683,7 +683,7 @@ export default function Home() {
             ))}
           </div>
           <div className="mt-10 text-center">
-            <a href="https://www.kellypraise.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.kellypraise.com/collections" target="_blank" rel="noopener noreferrer">
               <Button size="lg">Explore Jewellery Collection</Button>
             </a>
           </div>
