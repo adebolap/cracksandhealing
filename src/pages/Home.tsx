@@ -7,8 +7,8 @@ import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
 import { Mail, Phone, MapPin, Star, Sparkles, Heart, Calendar, Clock, Users, ShoppingBag, MessageCircle, Gem, HeartHandshake, Building2, Flame } from 'lucide-react'
-
-const CAL_EMBED_URL = 'https://cal.com/' // TODO: replace with your Cal.com username, e.g. https://cal.com/cracksandhealing
+import Cal, { getCalApi } from '@calcom/embed-react'
+import { useEffect } from 'react'
 
 const testimonials = [
   {
@@ -135,6 +135,13 @@ export default function Home() {
   const [form, setForm] = useState({ name: '', email: '', message: '' })
   const [submitting, setSubmitting] = useState(false)
   const [navOpen, setNavOpen] = useState(false)
+
+  useEffect(() => {
+    (async () => {
+      const cal = await getCalApi({ namespace: 'cracksandhealing' })
+      cal('ui', { theme: 'light', hideEventTypeDetails: false, layout: 'month_view' })
+    })()
+  }, [])
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }))
@@ -598,13 +605,11 @@ export default function Home() {
 
           {/* Cal.com inline embed */}
           <div className="rounded-xl border border-border overflow-hidden bg-white shadow-sm">
-            <iframe
-              src={CAL_EMBED_URL}
-              width="100%"
-              height="700"
-              frameBorder="0"
-              title="Book a Kintsugi Session"
-              className="w-full"
+            <Cal
+              namespace="cracksandhealing"
+              calLink="cracksandhealing/90min"
+              style={{ width: '100%', height: '700px', overflow: 'scroll' }}
+              config={{ layout: 'month_view', theme: 'light' }}
             />
           </div>
 
