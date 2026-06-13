@@ -163,38 +163,30 @@ export default function Home() {
       </nav>
 
       {/* Hero */}
-      <section id="top" className="grid grid-cols-1 lg:grid-cols-2 min-h-[580px]">
-        <div className="relative overflow-hidden min-h-[320px] lg:min-h-[580px]">
-          <img
-            src="https://d2xsxph8kpxj0f.cloudfront.net/310519663513933452/fWNnRpeZbww7L9TXKj2SnP/WhatsAppImage2026-04-10at13.04.23_ab0f432a.jpeg"
-            alt="Beautifully repaired Kintsugi ceramics with gold"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent" />
-        </div>
-        <div className="flex items-center px-8 lg:px-14 py-14 bg-background">
-          <div className="max-w-md">
-            <div className="inline-block mb-5 px-4 py-1.5 bg-accent/10 rounded-full text-accent text-sm font-bold">
+      <section id="top" className="relative min-h-[90vh] flex items-end">
+        <img
+          src="https://d2xsxph8kpxj0f.cloudfront.net/310519663513933452/fWNnRpeZbww7L9TXKj2SnP/WhatsAppImage2026-04-10at13.04.23_ab0f432a.jpeg"
+          alt="Beautifully repaired Kintsugi ceramics with gold"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/10" />
+        <div className="relative container pb-16 pt-32">
+          <div className="max-w-xl">
+            <div className="inline-block mb-5 px-4 py-1.5 bg-accent/20 backdrop-blur-sm rounded-full text-accent text-sm font-bold border border-accent/30">
               Restore Your Favourites
             </div>
-            <h1 className="text-5xl lg:text-6xl font-bold text-primary mb-5 leading-tight">
+            <h1 className="text-5xl lg:text-7xl font-bold text-white mb-5 leading-tight">
               Cracks &amp; <span className="text-accent">Healing</span>
             </h1>
-            <p className="text-lg text-foreground/70 mb-4 leading-relaxed">
-              Transform broken ceramics into beautiful art with our premium Kintsugi DIY repair kits.
+            <p className="text-lg text-white/80 mb-4 leading-relaxed">
+              Transform broken ceramics into beautiful art with our premium Kintsugi DIY repair kits. Based in Lagos, Nigeria.
             </p>
             <p className="text-accent font-semibold italic mb-8">
               "Wholeness doesn't mean imperfections—it means no part left out."
             </p>
             <div className="flex gap-4 flex-wrap">
               <a href="#shop"><Button size="lg">Shop Now</Button></a>
-              <a href="#booking"><Button size="lg" variant="outline">Book a Session</Button></a>
-            </div>
-            <div className="mt-10 pt-8 border-t border-accent/30">
-              <p className="text-xs font-bold text-accent uppercase tracking-wider mb-2">Our Story</p>
-              <p className="text-sm text-foreground/70 leading-relaxed">
-                Based in Lagos, Nigeria, we bring the ancient Japanese art of Kintsugi to modern homes. Each kit is carefully crafted to help you restore your favourite pieces with intention and beauty.
-              </p>
+              <a href="#booking"><Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary">Book a Session</Button></a>
             </div>
           </div>
         </div>
@@ -511,7 +503,7 @@ export default function Home() {
             <Cal
               namespace="cracksandhealing"
               calLink="cracksandhealing/120mins"
-              style={{ width: '100%', height: '700px', overflow: 'scroll' }}
+              style={{ width: '100%', height: 'min(700px, 85vh)', overflow: 'scroll' }}
               config={{ layout: 'month_view', theme: 'light' }}
             />
           </div>
