@@ -56,17 +56,17 @@ const shopItems = [
 
 const jewellery = [
   {
-    img: 'https://cdn.manus.im/webdev-static-assets/624845954_17924012307230222_3730887479679304862_n.jpg',
+    img: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663513933452/fWNnRpeZbww7L9TXKj2SnP/626988302_17924370186230222_8444082599227681296_n_be4bd3e5.jpg',
     title: 'Gold Seam Collection',
     desc: 'Handcrafted pieces featuring authentic gold seams inspired by Kintsugi philosophy.',
   },
   {
-    img: 'https://cdn.manus.im/webdev-static-assets/558206024_17910545127230222_595290270737101325_n.jpg',
+    img: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663513933452/fWNnRpeZbww7L9TXKj2SnP/625055820_17924012304230222_6843343957473948960_n_b77a6906.jpg',
     title: 'Healing Essence',
     desc: 'Unique designs that embody the transformative power of restoration and beauty.',
   },
   {
-    img: 'https://cdn.manus.im/webdev-static-assets/626988302_17924370186230222_8444082599227681296_n.jpg',
+    img: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663513933452/fWNnRpeZbww7L9TXKj2SnP/WhatsAppImage2026-04-10at13.04.20(1)_012d625d.jpeg',
     title: 'Artisan Crafted',
     desc: 'Each piece tells a story of transformation, imperfection, and timeless beauty.',
   },
