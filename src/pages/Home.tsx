@@ -458,7 +458,7 @@ export default function Home() {
         <div className="container">
           <div className="flex items-start justify-between mb-12">
             <div>
-              <h2 className="text-4xl lg:text-5xl font-bold text-primary mb-4">Shop Kelly Praise</h2>
+              <h2 className="text-4xl lg:text-5xl font-bold text-primary mb-4">Shop Our DIY Kits</h2>
               <p className="text-lg text-foreground/70 max-w-2xl">
                 Our Kintsugi DIY Repair Kits include everything you need — non-toxic powder, epoxy glue, brushes, a practice bowl, and a step-by-step manual. Enough for up to 3 repairs.
               </p>
