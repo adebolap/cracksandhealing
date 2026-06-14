@@ -151,9 +151,10 @@ export default function Home() {
             <p className="text-lg text-white/80 mb-4 leading-relaxed">
               The Japanese believe that what has been broken and repaired becomes more beautiful for having been broken. We bring that practice to Lagos — through kits you use at home and sessions that stay with you.
             </p>
-            <p className="text-accent font-semibold italic mb-8">
+            <p className="text-accent font-semibold italic mb-4">
               "Wholeness doesn't mean no imperfections — it means no part left out."
             </p>
+            <p className="text-white/60 text-sm mb-8">Sessions run every Saturday, May–November. Spots go fast.</p>
             <div className="flex gap-4 flex-wrap">
               <a href="#shop"><Button size="lg">Shop Now</Button></a>
               <button
@@ -187,25 +188,28 @@ export default function Home() {
                   <Users className="w-5 h-5 text-accent" />
                 </div>
                 <CardTitle>Open Session</CardTitle>
-                <CardDescription>Join our regular community workshop. Meet new people, slow down, and make something beautiful.</CardDescription>
+                <CardDescription>You'll arrive, choose a piece, and spend two hours repairing it with gold. No experience needed. You leave with something repaired — and something lighter.</CardDescription>
               </CardHeader>
               <CardContent className="flex flex-col flex-1 justify-between gap-6">
                 <ul className="space-y-2 text-sm text-foreground/70">
-                  <li className="flex gap-2"><span className="text-accent">✓</span> Up to 8 participants</li>
-                  <li className="flex gap-2"><span className="text-accent">✓</span> Saturdays only, 2 hrs</li>
-                  <li className="flex gap-2"><span className="text-accent">✓</span> Kit, instruction &amp; refreshments included</li>
+                  <li className="flex gap-2"><span className="text-accent">✓</span> Saturdays only · Max 8 people per session</li>
+                  <li className="flex gap-2"><span className="text-accent">✓</span> 2 hrs · Kit, instruction &amp; refreshments included</li>
                   <li className="flex gap-2"><span className="text-accent">✓</span> Take home your repaired piece</li>
                 </ul>
+                <blockquote className="border-l-2 border-accent pl-3 text-xs text-foreground/60 italic">
+                  "I almost cried. The intentionality in creating it was very evident." — Verified Customer
+                </blockquote>
                 <div>
                   <p className="text-3xl font-bold text-primary mb-1">₦75,000 <span className="text-base font-normal text-muted-foreground">/ person</span></p>
                   <button
                     data-cal-namespace="cracksandhealing"
                     data-cal-link="cracksandhealing/120mins"
                     data-cal-config='{"layout":"month_view","theme":"light"}'
-                    className="w-full mt-3 inline-flex items-center justify-center h-10 px-4 rounded-md bg-primary text-primary-foreground font-semibold text-sm hover:bg-primary/90 transition-colors"
+                    className="w-full mt-3 inline-flex items-center justify-center h-10 px-4 rounded-md bg-accent text-primary font-bold text-sm hover:bg-accent/90 transition-colors"
                   >
                     Book a Spot
                   </button>
+                  <p className="text-xs text-center text-muted-foreground mt-2">Reserve with a 50% deposit — balance due the week of your session.</p>
                 </div>
               </CardContent>
             </Card>
@@ -388,7 +392,7 @@ export default function Home() {
           </div>
 
           <p className="text-center text-sm text-muted-foreground mt-8">
-            All private packages require a 50% non-refundable deposit at booking. Balance due 48 hours before your session.
+            All private packages are reserved with a 50% deposit — the balance is due 48 hours before your session.
           </p>
         </div>
       </section>
