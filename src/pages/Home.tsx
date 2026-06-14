@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { toast } from 'sonner'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
@@ -6,86 +6,52 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
-import { Mail, Phone, MapPin, Star, Sparkles, Heart, Users, ShoppingBag, MessageCircle, Gem, HeartHandshake, Building2, Flame } from 'lucide-react'
-import Cal, { getCalApi } from '@calcom/embed-react'
-import { useEffect } from 'react'
+import { Mail, Phone, MapPin, Star, Sparkles, Heart, Users, MessageCircle, Gem, HeartHandshake, Building2, Flame } from 'lucide-react'
+import { getCalApi } from '@calcom/embed-react'
 
 const testimonials = [
   {
-    text: 'Truly beautiful. Truly God-inspired. Kelly Praise\'s pieces are not just timeless, elegant and stylish, they speak love, comfort, encouragement and reassurance.',
+    text: 'Truly beautiful. Truly God-inspired. Kelly Praise\'s pieces speak love, comfort, encouragement and reassurance.',
     author: 'Verified Customer',
-    rating: 5,
     img: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663513933452/fWNnRpeZbww7L9TXKj2SnP/WhatsAppImage2026-04-10at13.04.19(2)_7ceaef3d.jpeg',
   },
   {
-    text: 'Every piece I buy from your store is precious. Quality, beauty, value for money, all at the top. Thank you most especially for the meaning each piece affirms.',
+    text: 'Every piece I buy from your store is precious. Quality, beauty, value for money — all at the top.',
     author: 'Verified Customer',
-    rating: 5,
     img: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663513933452/fWNnRpeZbww7L9TXKj2SnP/WhatsAppImage2026-04-10at13.04.20_4e4692d8.jpeg',
   },
   {
-    text: 'You have the best customer service I\'ve ever experienced. I love how intentional every conversation is. Your jewellery is top notch quality.',
+    text: 'You have the best customer service I\'ve ever experienced. Your jewellery is top notch quality.',
     author: 'Verified Customer',
-    rating: 5,
     img: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663513933452/fWNnRpeZbww7L9TXKj2SnP/WhatsAppImage2026-04-10at13.04.21(1)_fb908a57.jpeg',
   },
   {
-    text: 'I almost cried when I got my jewellery. The packaging and the piece really had me emotional. The intentionality in creating it was very evident.',
+    text: 'I almost cried when I got my jewellery. The intentionality in creating it was very evident.',
     author: 'Verified Customer',
-    rating: 5,
     img: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663513933452/fWNnRpeZbww7L9TXKj2SnP/WhatsAppImage2026-04-10at13.04.21_64f53779.jpeg',
-  },
-]
-
-const shopItems = [
-  {
-    id: 1,
-    name: 'Kintsugi DIY Repair Kit — Gold',
-    price: '₦42,000',
-    img: 'https://www.kellypraise.com/cdn/shop/files/9496B945-DEA4-41F8-B40F-06B5F624D948.jpg?v=1731190498&width=800',
-    link: 'https://www.kellypraise.com/products/kitsungi-diy-repair-kit?variant=46058959569141',
-  },
-  {
-    id: 2,
-    name: 'Kintsugi DIY Repair Kit — Silver',
-    price: '₦42,000',
-    img: 'https://www.kellypraise.com/cdn/shop/files/B0B2C2B8-007D-47AC-9F56-689164B4FB60.jpg?v=1731190542&width=800',
-    link: 'https://www.kellypraise.com/products/kitsungi-diy-repair-kit',
   },
 ]
 
 const faqs = [
   {
     q: "What's included in the Kintsugi DIY Repair Kit?",
-    a: (
-      <span>
-        Each kit includes: non-toxic gold or silver powder, a mixing stick, 20ml top-quality epoxy glue, one mixing bowl, 2 paint brushes, 1 ceramic practice bowl, protective gloves, a step-by-step manual, and keepsake stickers. Enough for up to 3 repairs depending on size.
-      </span>
-    ),
+    a: 'Each kit includes: non-toxic gold or silver powder, a mixing stick, 20ml epoxy glue, a mixing bowl, 2 brushes, a ceramic practice bowl, protective gloves, a step-by-step manual, and keepsake stickers. Enough for up to 3 repairs.',
   },
   {
     q: 'Is Kintsugi difficult? Do I need prior experience?',
-    a: 'Not at all! Kintsugi is accessible to everyone regardless of experience. Our kits are designed for beginners with clear instructions and a practice piece included. The beauty of Kintsugi is that imperfections are part of the art.',
+    a: 'Not at all. Our kits are designed for beginners with clear instructions and a practice piece included. Imperfections are part of the art.',
   },
   {
     q: 'How long does shipping take? Do you ship internationally?',
-    a: (
-      <span>
-        We ship worldwide. Nigeria: 3–5 business days. West Africa: 7–10 days. Europe & North America: 10–14 days. Other regions: 14–21 days. All orders include tracking. For rush shipping, contact us via WhatsApp.
-      </span>
-    ),
+    a: 'We ship worldwide. Nigeria: 3–5 business days. West Africa: 7–10 days. Europe & North America: 10–14 days. All orders include tracking.',
   },
   {
     q: 'How far in advance do I need to book a session?',
-    a: 'At least 2 weeks for standard sessions. For groups of 10+, 4 weeks notice is appreciated. Last-minute availability — contact us via WhatsApp to check.',
-  },
-  {
-    q: 'Can I book for a group (bridal shower, team building, birthday)?',
-    a: 'Absolutely! We specialise in group experiences for bridal showers, birthdays, team bonding, and night-out events. Groups of 10+ welcome. Contact us via WhatsApp to discuss your group.',
+    a: 'At least 2 weeks for standard sessions. For groups of 10+, 4 weeks notice is appreciated. Last-minute availability — contact us via WhatsApp.',
   },
   {
     q: 'What payment methods do you accept?',
-    a: 'Credit/debit cards (Visa, Mastercard), bank transfers via Paystack, and mobile money. For DIY session bookings, a deposit secures your spot with the balance due before the session.',
+    a: 'Credit/debit cards (Visa, Mastercard) and bank transfers via Paystack. A 50% non-refundable deposit secures your session booking.',
   },
 ]
 
@@ -149,15 +115,19 @@ export default function Home() {
             <span className="block w-6 h-0.5 bg-primary" />
           </button>
 
-          <div className={`${navOpen ? 'flex' : 'hidden'} md:flex absolute md:relative top-16 md:top-auto left-0 md:left-auto w-full md:w-auto flex-col md:flex-row bg-white md:bg-transparent border-b md:border-0 border-border p-4 md:p-0 gap-4 md:gap-8 shadow-md md:shadow-none`}>
-            {['packages', 'shop', 'contact'].map(id => (
-              <a key={id} href={`#${id}`} className="text-sm font-semibold text-muted-foreground hover:text-primary capitalize transition-colors" onClick={() => setNavOpen(false)}>
-                {id}
-              </a>
-            ))}
-            <a href="#booking" className="text-sm px-4 py-2 bg-accent text-primary rounded-lg font-bold hover:bg-accent/90 transition-colors" onClick={() => setNavOpen(false)}>
+          <div className={`${navOpen ? 'flex' : 'hidden'} md:flex absolute md:relative top-16 md:top-auto left-0 md:left-auto w-full md:w-auto flex-col md:flex-row bg-white md:bg-transparent border-b md:border-0 border-border p-4 md:p-0 gap-6 md:gap-8 shadow-md md:shadow-none`}>
+            <a href="#packages" className="text-sm font-semibold text-muted-foreground hover:text-primary capitalize transition-colors" onClick={() => setNavOpen(false)}>Sessions</a>
+            <a href="#shop" className="text-sm font-semibold text-muted-foreground hover:text-primary capitalize transition-colors" onClick={() => setNavOpen(false)}>Shop</a>
+            <a href="#contact" className="text-sm font-semibold text-muted-foreground hover:text-primary capitalize transition-colors" onClick={() => setNavOpen(false)}>Contact</a>
+            <button
+              data-cal-namespace="cracksandhealing"
+              data-cal-link="cracksandhealing/120mins"
+              data-cal-config='{"layout":"month_view","theme":"light"}'
+              className="text-sm px-4 py-2 bg-accent text-primary rounded-lg font-bold hover:bg-accent/90 transition-colors text-left md:text-center"
+              onClick={() => setNavOpen(false)}
+            >
               Book Now
-            </a>
+            </button>
           </div>
         </div>
       </nav>
@@ -179,14 +149,21 @@ export default function Home() {
               Cracks &amp; <span className="text-accent">Healing</span>
             </h1>
             <p className="text-lg text-white/80 mb-4 leading-relaxed">
-              Transform broken ceramics into beautiful art with our premium Kintsugi DIY repair kits. Based in Lagos, Nigeria.
+              Transform broken ceramics into beautiful art. Premium Kintsugi kits and immersive sessions. Based in Lagos, Nigeria.
             </p>
             <p className="text-accent font-semibold italic mb-8">
               "Wholeness doesn't mean imperfections—it means no part left out."
             </p>
             <div className="flex gap-4 flex-wrap">
               <a href="#shop"><Button size="lg">Shop Now</Button></a>
-              <a href="#booking"><Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary">Book a Session</Button></a>
+              <button
+                data-cal-namespace="cracksandhealing"
+                data-cal-link="cracksandhealing/120mins"
+                data-cal-config='{"layout":"month_view","theme":"light"}'
+                className="inline-flex items-center justify-center h-11 px-8 rounded-md border border-white text-white font-semibold text-sm hover:bg-white hover:text-primary transition-colors"
+              >
+                Book a Session
+              </button>
             </div>
           </div>
         </div>
@@ -203,7 +180,7 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
 
-            {/* Standard */}
+            {/* Open Session */}
             <Card className="border-border bg-white hover:shadow-lg transition-all duration-300 hover:border-accent/40 flex flex-col">
               <CardHeader>
                 <div className="w-11 h-11 rounded-lg bg-accent/10 flex items-center justify-center mb-3">
@@ -215,13 +192,20 @@ export default function Home() {
               <CardContent className="flex flex-col flex-1 justify-between gap-6">
                 <ul className="space-y-2 text-sm text-foreground/70">
                   <li className="flex gap-2"><span className="text-accent">✓</span> Up to 8 participants</li>
-                  <li className="flex gap-2"><span className="text-accent">✓</span> Saturdays &amp; Sundays, 2 hrs</li>
+                  <li className="flex gap-2"><span className="text-accent">✓</span> Saturdays only, 2 hrs</li>
                   <li className="flex gap-2"><span className="text-accent">✓</span> Kit, instruction &amp; refreshments included</li>
                   <li className="flex gap-2"><span className="text-accent">✓</span> Take home your repaired piece</li>
                 </ul>
                 <div>
                   <p className="text-3xl font-bold text-primary mb-1">₦75,000 <span className="text-base font-normal text-muted-foreground">/ person</span></p>
-                  <a href="#booking"><Button className="w-full mt-3">Book a Spot</Button></a>
+                  <button
+                    data-cal-namespace="cracksandhealing"
+                    data-cal-link="cracksandhealing/120mins"
+                    data-cal-config='{"layout":"month_view","theme":"light"}'
+                    className="w-full mt-3 inline-flex items-center justify-center h-10 px-4 rounded-md bg-primary text-primary-foreground font-semibold text-sm hover:bg-primary/90 transition-colors"
+                  >
+                    Book a Spot
+                  </button>
                 </div>
               </CardContent>
             </Card>
@@ -251,7 +235,7 @@ export default function Home() {
               </CardContent>
             </Card>
 
-            {/* Friendship / Girls' Night */}
+            {/* Friendship */}
             <Card className="border-border bg-white hover:shadow-lg transition-all duration-300 hover:border-accent/40 flex flex-col">
               <CardHeader>
                 <div className="w-11 h-11 rounded-lg bg-accent/10 flex items-center justify-center mb-3">
@@ -311,7 +295,7 @@ export default function Home() {
                   <Gem className="w-5 h-5 text-accent" />
                 </div>
                 <CardTitle>Bridal Shower</CardTitle>
-                <CardDescription>Lagos's most intentional bridal experience — curated, Instagrammable, and deeply meaningful for the bride and her circle.</CardDescription>
+                <CardDescription>Lagos's most intentional bridal experience — curated, Instagrammable, and deeply meaningful.</CardDescription>
               </CardHeader>
               <CardContent className="flex flex-col flex-1 justify-between gap-6">
                 <ul className="space-y-2 text-sm text-foreground/70">
@@ -338,7 +322,7 @@ export default function Home() {
                   <Building2 className="w-5 h-5 text-accent" />
                 </div>
                 <CardTitle>Team Bonding / Corporate</CardTitle>
-                <CardDescription>A philosophy-led team experience built around resilience, imperfection, and connection. Trusted by teams globally.</CardDescription>
+                <CardDescription>A philosophy-led team experience built around resilience, imperfection, and connection.</CardDescription>
               </CardHeader>
               <CardContent className="flex flex-col flex-1 justify-between gap-6">
                 <ul className="space-y-2 text-sm text-foreground/70">
@@ -346,11 +330,10 @@ export default function Home() {
                   <li className="flex gap-2"><span className="text-accent">✓</span> Philosophy intro: resilience &amp; team culture</li>
                   <li className="flex gap-2"><span className="text-accent">✓</span> Flat session fee + per-head rate</li>
                   <li className="flex gap-2"><span className="text-accent">✓</span> On-site option available (Lagos)</li>
-                  <li className="flex gap-2"><span className="text-accent">✓</span> Full payment upfront for confirmed booking</li>
                 </ul>
                 <div>
                   <p className="text-3xl font-bold text-primary mb-1">₦150k <span className="text-base font-normal text-muted-foreground">flat + ₦75k/head</span></p>
-                  <p className="text-xs text-muted-foreground mb-3">Min. engagement ₦600,000 · 10 people = ₦900,000</p>
+                  <p className="text-xs text-muted-foreground mb-3">Min. engagement ₦600,000</p>
                   <a href="https://wa.me/2348113993291?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20Team%20Bonding%20for%20my%20company." target="_blank" rel="noreferrer">
                     <Button className="w-full">Get a Quote</Button>
                   </a>
@@ -368,11 +351,9 @@ export default function Home() {
                     </div>
                     <h3 className="text-xl font-bold text-primary mb-2 font-serif">Healing Session</h3>
                     <p className="text-foreground/70 text-sm leading-relaxed mb-4">
-                      Our most intentional offering — a solo 1:1 or small circle experience designed for people in a season of grief, transition, or burnout. You'll set a healing intention, repair your piece with care, and close with a quiet reflection. Bespoke, unhurried, and deeply personal.
+                      A solo 1:1 or small circle experience designed for people in a season of grief, transition, or burnout. You'll set a healing intention, repair your piece with care, and close with a quiet reflection. Bespoke, unhurried, deeply personal.
                     </p>
-                    <p className="text-xs text-muted-foreground italic">
-                      This is a mindful craft experience, not a clinical service. For people who need space to breathe and create.
-                    </p>
+                    <p className="text-xs text-muted-foreground italic">A mindful craft experience, not a clinical service.</p>
                   </div>
                   <div className="space-y-4">
                     <div className="flex justify-between items-center p-4 bg-white rounded-xl border border-border">
@@ -412,61 +393,35 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section id="testimonials" className="py-16 bg-background border-t border-border">
-        <div className="container">
-          <h2 className="text-3xl lg:text-4xl font-bold text-primary mb-2">Loved by Our Community</h2>
-          <p className="text-base text-foreground/70 mb-10">Real stories from people who've transformed their broken ceramics into treasured pieces.</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {testimonials.map((t, i) => (
-              <Card key={i} className="overflow-hidden hover:shadow-lg transition-all duration-300">
-                <div className="h-32 overflow-hidden bg-gray-50">
-                  <img src={t.img} alt="" className="w-full h-full object-cover" />
-                </div>
-                <CardContent className="pt-6">
-                  <div className="flex gap-1 mb-3">
-                    {Array.from({ length: t.rating }).map((_, j) => (
-                      <Star key={j} className="w-4 h-4 fill-accent text-accent" />
-                    ))}
-                  </div>
-                  <p className="text-foreground/80 mb-4 leading-relaxed italic text-sm">"{t.text}"</p>
-                  <p className="font-semibold text-primary text-sm">{t.author}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-          <div className="mt-12 p-8 bg-accent/5 rounded-xl border border-accent/20 text-center">
-            <div className="flex justify-center gap-1 mb-3">
-              {Array.from({ length: 5 }).map((_, i) => <Star key={i} className="w-5 h-5 fill-accent text-accent" />)}
-            </div>
-            <p className="text-2xl font-bold text-primary mb-1">4.8 out of 5</p>
-            <p className="text-foreground/70 text-sm">Based on 100+ verified customer reviews</p>
-          </div>
-        </div>
-      </section>
-
       {/* Shop */}
-      <section id="shop" className="py-16 bg-accent/5 border-t border-border">
+      <section id="shop" className="py-16 bg-background border-t border-border">
         <div className="container">
-          <div className="flex items-start justify-between mb-12">
-            <div>
-              <h2 className="text-4xl lg:text-5xl font-bold text-primary mb-4">Shop Our DIY Kits</h2>
-              <p className="text-lg text-foreground/70 max-w-2xl">
-                Our Kintsugi DIY Repair Kits include everything you need — non-toxic powder, epoxy glue, brushes, a practice bowl, and a step-by-step manual. Enough for up to 3 repairs.
-              </p>
-            </div>
-            <ShoppingBag className="w-10 h-10 text-accent opacity-20 hidden md:block" />
+          <div className="mb-10">
+            <h2 className="text-3xl lg:text-4xl font-bold text-primary mb-3">Shop Our DIY Kits</h2>
+            <p className="text-base text-foreground/70 max-w-2xl">
+              Everything you need for up to 3 repairs — non-toxic powder, epoxy glue, brushes, a practice bowl, and a step-by-step manual.
+            </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {shopItems.map(item => (
-              <Card key={item.id} className="overflow-hidden hover:shadow-lg transition-all duration-300">
+            {[
+              {
+                name: 'Kintsugi DIY Repair Kit — Gold',
+                price: '₦42,000',
+                img: 'https://www.kellypraise.com/cdn/shop/files/9496B945-DEA4-41F8-B40F-06B5F624D948.jpg?v=1731190498&width=800',
+                link: 'https://www.kellypraise.com/products/kitsungi-diy-repair-kit?variant=46058959569141',
+              },
+              {
+                name: 'Kintsugi DIY Repair Kit — Silver',
+                price: '₦42,000',
+                img: 'https://www.kellypraise.com/cdn/shop/files/B0B2C2B8-007D-47AC-9F56-689164B4FB60.jpg?v=1731190542&width=800',
+                link: 'https://www.kellypraise.com/products/kitsungi-diy-repair-kit',
+              },
+            ].map(item => (
+              <Card key={item.name} className="overflow-hidden hover:shadow-lg transition-all duration-300">
                 <div className="h-64 overflow-hidden bg-gray-50">
                   <img src={item.img} alt={item.name} className="w-full h-full object-cover" />
                 </div>
                 <CardContent className="pt-5">
-                  <div className="flex gap-1 mb-2">
-                    {Array.from({ length: 5 }).map((_, i) => <Star key={i} className="w-4 h-4 fill-accent text-accent" />)}
-                  </div>
                   <h3 className="font-semibold text-primary mb-3">{item.name}</h3>
                   <div className="flex items-center justify-between">
                     <span className="text-2xl font-bold text-accent">{item.price}</span>
@@ -478,7 +433,7 @@ export default function Home() {
               </Card>
             ))}
           </div>
-          <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
             <a href="https://www.kellypraise.com" target="_blank" rel="noopener noreferrer">
               <Button size="lg">View Full Shop</Button>
             </a>
@@ -489,40 +444,26 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Booking */}
-      <section id="booking" className="py-16 bg-white border-t border-border">
+      {/* Testimonials */}
+      <section className="py-16 bg-accent/5 border-t border-border">
         <div className="container">
-          <div className="max-w-2xl mx-auto text-center mb-10">
-            <h2 className="text-4xl lg:text-5xl font-bold text-primary mb-4">Book a Session</h2>
-            <p className="text-lg text-foreground/70">
-              Join us for an immersive Kintsugi experience. Sessions run Saturdays only, May–November 2026. All materials, expert instruction, and your take-home ceramic piece included.
-            </p>
-          </div>
-
-          <div className="rounded-xl border border-border overflow-hidden bg-white shadow-sm">
-            <Cal
-              namespace="cracksandhealing"
-              calLink="cracksandhealing/120mins"
-              style={{ width: '100%', height: 'min(700px, 85vh)', overflow: 'scroll' }}
-              config={{ layout: 'month_view', theme: 'light' }}
-            />
-          </div>
-
-          <div className="mt-6 text-center space-y-2">
-            <p className="text-sm text-muted-foreground">
-              After booking you'll be redirected to complete payment via Paystack. Your spot is confirmed once payment is received.
-            </p>
-            <p className="text-sm text-muted-foreground">
-              Prefer to book directly?{' '}
-              <a
-                href="https://wa.me/2348113993291?text=Hi%20Cracks%20%26%20Healing%2C%20I%27d%20like%20to%20book%20a%20session."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-accent font-semibold hover:underline"
-              >
-                Message us on WhatsApp
-              </a>
-            </p>
+          <h2 className="text-3xl font-bold text-primary mb-2">What Our Community Says</h2>
+          <p className="text-base text-foreground/70 mb-10">100+ verified reviews · 4.8 out of 5</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {testimonials.map((t, i) => (
+              <Card key={i} className="overflow-hidden">
+                <div className="h-28 overflow-hidden bg-gray-50">
+                  <img src={t.img} alt="" className="w-full h-full object-cover" />
+                </div>
+                <CardContent className="pt-5">
+                  <div className="flex gap-1 mb-3">
+                    {Array.from({ length: 5 }).map((_, j) => <Star key={j} className="w-3.5 h-3.5 fill-accent text-accent" />)}
+                  </div>
+                  <p className="text-foreground/80 leading-relaxed italic text-sm mb-3">"{t.text}"</p>
+                  <p className="font-semibold text-primary text-xs">{t.author}</p>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
@@ -532,7 +473,7 @@ export default function Home() {
         <div className="container grid grid-cols-1 lg:grid-cols-2 gap-10">
           <div>
             <h2 className="text-4xl font-bold text-primary mb-4">Get in Touch</h2>
-            <p className="text-lg text-foreground/70 mb-10">Have questions about our Kintsugi kits or sessions? We'd love to hear from you.</p>
+            <p className="text-foreground/70 mb-10">Questions about our kits or sessions? We'd love to hear from you.</p>
             <div className="space-y-6">
               {([
                 { Icon: MapPin, label: 'Location', value: 'Lagos, Nigeria', href: null },
@@ -551,14 +492,6 @@ export default function Home() {
                       <p className="text-foreground/70 text-sm">{value}</p>
                     )}
                   </div>
-                </div>
-              ))}
-            </div>
-            <div className="mt-10 pt-8 border-t border-border grid grid-cols-3 gap-4 text-center">
-              {[['100+', 'Happy Customers'], ['4.8★', 'Rating'], ['Lagos', 'Based']].map(([val, lbl]) => (
-                <div key={lbl}>
-                  <p className="text-2xl font-bold text-accent mb-1">{val}</p>
-                  <p className="text-xs text-foreground/60">{lbl}</p>
                 </div>
               ))}
             </div>
@@ -590,10 +523,7 @@ export default function Home() {
       {/* FAQ */}
       <section id="faq" className="py-16 bg-white border-t border-border">
         <div className="container max-w-3xl mx-auto">
-          <div className="text-center mb-10">
-            <h2 className="text-4xl font-bold text-primary mb-3">Frequently Asked Questions</h2>
-            <p className="text-foreground/70">Find answers to common questions about our Kintsugi kits, sessions, and shipping.</p>
-          </div>
+          <h2 className="text-3xl font-bold text-primary mb-10 text-center">Frequently Asked Questions</h2>
           <Accordion type="single" collapsible className="space-y-3">
             {faqs.map((f, i) => (
               <AccordionItem key={i} value={`item-${i}`} className="border border-border rounded-lg px-5">
@@ -602,16 +532,11 @@ export default function Home() {
               </AccordionItem>
             ))}
           </Accordion>
-          <div className="mt-10 p-6 bg-accent/5 border border-accent/20 rounded-xl text-center">
-            <p className="text-foreground/70 mb-4 text-sm">Didn't find your answer? We're here to help!</p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="https://wa.me/2348113993291?text=Hi%20Cracks%20and%20Healing%2C%20I%20have%20a%20question." target="_blank" rel="noopener noreferrer">
-                <Button className="bg-green-500 hover:bg-green-600 text-white">Chat on WhatsApp</Button>
-              </a>
-              <a href="mailto:kellyraise@gmail.com">
-                <Button variant="outline">Email Us</Button>
-              </a>
-            </div>
+          <div className="mt-10 text-center">
+            <p className="text-foreground/70 mb-4 text-sm">Still have questions?</p>
+            <a href="https://wa.me/2348113993291?text=Hi%20Cracks%20and%20Healing%2C%20I%20have%20a%20question." target="_blank" rel="noopener noreferrer">
+              <Button className="bg-green-500 hover:bg-green-600 text-white">Chat on WhatsApp</Button>
+            </a>
           </div>
         </div>
       </section>
@@ -619,7 +544,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="bg-primary text-primary-foreground py-12">
         <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
             <div>
               <h4 className="font-bold mb-3 font-serif">Cracks & Healing</h4>
               <p className="text-sm opacity-80">Transforming broken ceramics into beautiful art through the ancient Japanese art of Kintsugi.</p>
@@ -627,16 +552,9 @@ export default function Home() {
             <div>
               <h4 className="font-bold mb-3">Quick Links</h4>
               <ul className="space-y-2 text-sm">
-                {['packages', 'shop', 'booking', 'contact', 'faq'].map(id => (
-                  <li key={id}><a href={`#${id}`} className="opacity-80 hover:opacity-100 capitalize">{id}</a></li>
+                {[['packages', 'Sessions'], ['shop', 'Shop'], ['contact', 'Contact'], ['faq', 'FAQ']].map(([id, label]) => (
+                  <li key={id}><a href={`#${id}`} className="opacity-80 hover:opacity-100">{label}</a></li>
                 ))}
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-bold mb-3">Follow Us</h4>
-              <ul className="space-y-2 text-sm">
-                <li><a href="https://www.instagram.com/cracksandhealing/" target="_blank" rel="noreferrer" className="opacity-80 hover:opacity-100">Instagram</a></li>
-                <li><a href="https://www.kellypraise.com" target="_blank" rel="noreferrer" className="opacity-80 hover:opacity-100">Kelly Praise Store</a></li>
               </ul>
             </div>
             <div>
@@ -645,20 +563,17 @@ export default function Home() {
                 <li>Lagos, Nigeria</li>
                 <li><a href="mailto:kellyraise@gmail.com" className="hover:opacity-100">kellyraise@gmail.com</a></li>
                 <li><a href="https://wa.me/2348113993291" className="hover:opacity-100">+234 811 399 3291</a></li>
+                <li><a href="https://www.instagram.com/cracksandhealing/" target="_blank" rel="noreferrer" className="hover:opacity-100">Instagram</a></li>
               </ul>
             </div>
           </div>
-          <div className="border-t border-primary-foreground/20 pt-6 flex flex-col md:flex-row justify-between items-center text-sm opacity-70 gap-4">
+          <div className="border-t border-primary-foreground/20 pt-6 text-sm opacity-70 text-center">
             <p>&copy; {new Date().getFullYear()} Cracks and Healing. All rights reserved.</p>
-            <div className="flex gap-6">
-              <a href="#" className="hover:opacity-100">Privacy Policy</a>
-              <a href="#" className="hover:opacity-100">Terms of Service</a>
-            </div>
           </div>
         </div>
       </footer>
 
-      {/* Floating WhatsApp button */}
+      {/* Floating WhatsApp */}
       <a
         href="https://wa.me/2348113993291?text=Hi%20Cracks%20and%20Healing%2C%20I%27m%20interested%20in%20your%20Kintsugi%20services."
         target="_blank"
