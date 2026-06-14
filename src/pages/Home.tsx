@@ -12,22 +12,22 @@ import { getCalApi } from '@calcom/embed-react'
 const testimonials = [
   {
     text: 'Truly beautiful. Truly God-inspired. Kelly Praise\'s pieces speak love, comfort, encouragement and reassurance.',
-    author: 'Verified Customer',
+    author: 'Chisom A., Lagos',
     img: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663513933452/fWNnRpeZbww7L9TXKj2SnP/WhatsAppImage2026-04-10at13.04.19(2)_7ceaef3d.jpeg',
   },
   {
     text: 'Every piece I buy from your store is precious. Quality, beauty, value for money — all at the top.',
-    author: 'Verified Customer',
+    author: 'Tolu M., Abuja',
     img: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663513933452/fWNnRpeZbww7L9TXKj2SnP/WhatsAppImage2026-04-10at13.04.20_4e4692d8.jpeg',
   },
   {
     text: 'You have the best customer service I\'ve ever experienced. Your jewellery is top notch quality.',
-    author: 'Verified Customer',
+    author: 'Funke O., Lagos',
     img: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663513933452/fWNnRpeZbww7L9TXKj2SnP/WhatsAppImage2026-04-10at13.04.21(1)_fb908a57.jpeg',
   },
   {
     text: 'I almost cried when I got my jewellery. The intentionality in creating it was very evident.',
-    author: 'Verified Customer',
+    author: 'Ngozi B., Lagos',
     img: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663513933452/fWNnRpeZbww7L9TXKj2SnP/WhatsAppImage2026-04-10at13.04.21_64f53779.jpeg',
   },
 ]
@@ -299,7 +299,7 @@ export default function Home() {
                   <Gem className="w-5 h-5 text-accent" />
                 </div>
                 <CardTitle>Bridal Shower</CardTitle>
-                <CardDescription>Lagos's most intentional bridal experience — curated, Instagrammable, and deeply meaningful.</CardDescription>
+                <CardDescription>The most intentional bridal experience we know how to give — curated for the bride who wants meaning, not just a moment.</CardDescription>
               </CardHeader>
               <CardContent className="flex flex-col flex-1 justify-between gap-6">
                 <ul className="space-y-2 text-sm text-foreground/70">
@@ -326,14 +326,14 @@ export default function Home() {
                   <Building2 className="w-5 h-5 text-accent" />
                 </div>
                 <CardTitle>Team Bonding / Corporate</CardTitle>
-                <CardDescription>A philosophy-led team experience built around resilience, imperfection, and connection.</CardDescription>
+                <CardDescription>Built around one idea: the cracks in a team aren't weaknesses — they're where the growth happened.</CardDescription>
               </CardHeader>
               <CardContent className="flex flex-col flex-1 justify-between gap-6">
                 <ul className="space-y-2 text-sm text-foreground/70">
                   <li className="flex gap-2"><span className="text-accent">✓</span> Minimum 6 people</li>
                   <li className="flex gap-2"><span className="text-accent">✓</span> Philosophy intro: resilience &amp; team culture</li>
                   <li className="flex gap-2"><span className="text-accent">✓</span> Flat session fee + per-head rate</li>
-                  <li className="flex gap-2"><span className="text-accent">✓</span> On-site option available (Lagos)</li>
+                  <li className="flex gap-2"><span className="text-accent">✓</span> Lagos-based, on-site option available</li>
                 </ul>
                 <div>
                   <p className="text-3xl font-bold text-primary mb-1">₦150k <span className="text-base font-normal text-muted-foreground">flat + ₦75k/head</span></p>
@@ -375,7 +375,7 @@ export default function Home() {
                     <div className="flex justify-between items-center p-4 bg-white rounded-xl border border-border">
                       <div>
                         <p className="font-semibold text-primary text-sm">Healing Circle — 2–3 people</p>
-                        <p className="text-xs text-muted-foreground">Facilitated by an expert</p>
+                        <p className="text-xs text-muted-foreground">Facilitated by Kelly Praise</p>
                       </div>
                       <div className="text-right">
                         <p className="text-xl font-bold text-primary">₦95,000<span className="text-sm font-normal text-muted-foreground">/person</span></p>
@@ -444,7 +444,7 @@ export default function Home() {
       <section className="py-16 bg-accent/5 border-t border-border">
         <div className="container">
           <h2 className="text-3xl font-bold text-primary mb-2">What Our Community Says</h2>
-          <p className="text-base text-foreground/70 mb-10">100+ verified reviews · 4.8 out of 5</p>
+          <p className="text-base text-foreground/70 mb-10">100+ customer reviews</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {testimonials.map((t, i) => (
               <Card key={i} className="overflow-hidden">
@@ -468,7 +468,7 @@ export default function Home() {
       <section id="contact" className="py-16 bg-background border-t border-border">
         <div className="container grid grid-cols-1 lg:grid-cols-2 gap-10">
           <div>
-            <h2 className="text-4xl font-bold text-primary mb-4">Get in Touch</h2>
+            <h2 className="text-4xl font-bold text-primary mb-4">Start a Conversation</h2>
             <p className="text-foreground/70 mb-10">Questions about our kits or sessions? We'd love to hear from you.</p>
             <div className="space-y-6">
               {([
@@ -564,7 +564,7 @@ export default function Home() {
             </div>
           </div>
           <div className="border-t border-primary-foreground/20 pt-6 text-sm opacity-70 text-center">
-            <p>&copy; {new Date().getFullYear()} Cracks and Healing. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} Cracks &amp; Healing. All rights reserved.</p>
           </div>
         </div>
       </footer>
