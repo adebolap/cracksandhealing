@@ -171,7 +171,7 @@ export default function Home() {
       </section>
 
       {/* Packages */}
-      <section id="packages" className="py-16 bg-accent/5 border-t border-border">
+      <section id="packages" className="py-16 bg-terra/5 border-t border-border">
         <div className="container">
           <div className="max-w-2xl mb-12">
             <p className="text-xs font-bold text-accent uppercase tracking-widest mb-3">Sessions &amp; Packages</p>
@@ -196,7 +196,7 @@ export default function Home() {
                   <li className="flex gap-2"><span className="text-accent">✓</span> 2 hrs · Kit, instruction &amp; refreshments included</li>
                   <li className="flex gap-2"><span className="text-accent">✓</span> Take home your repaired piece</li>
                 </ul>
-                <blockquote className="border-l-2 border-accent pl-3 text-xs text-foreground/60 italic">
+                <blockquote className="border-l-2 border-terra pl-3 text-xs text-foreground/60 italic">
                   "I almost cried. The intentionality in creating it was very evident." — Verified Customer
                 </blockquote>
                 <div>
@@ -293,7 +293,7 @@ export default function Home() {
 
             {/* Bridal */}
             <Card className="border-2 border-accent bg-white hover:shadow-xl transition-all duration-300 flex flex-col relative overflow-hidden">
-              <div className="absolute top-4 right-4 bg-accent text-primary text-xs font-bold px-3 py-1 rounded-full">Most Popular</div>
+              <div className="absolute top-4 right-4 bg-terra text-terra-foreground text-xs font-bold px-3 py-1 rounded-full">Most Popular</div>
               <CardHeader>
                 <div className="w-11 h-11 rounded-lg bg-accent/20 flex items-center justify-center mb-3">
                   <Gem className="w-5 h-5 text-accent" />
@@ -441,7 +441,7 @@ export default function Home() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-16 bg-accent/5 border-t border-border">
+      <section className="py-16 bg-terra/5 border-t border-border">
         <div className="container">
           <h2 className="text-3xl font-bold text-primary mb-2">What Our Community Says</h2>
           <p className="text-base text-foreground/70 mb-10">100+ customer reviews</p>
@@ -531,7 +531,7 @@ export default function Home() {
           <div className="mt-10 text-center">
             <p className="text-foreground/70 mb-4 text-sm">Still have questions?</p>
             <a href="https://wa.me/2348113993291?text=Hi%20Cracks%20and%20Healing%2C%20I%20have%20a%20question." target="_blank" rel="noopener noreferrer">
-              <Button className="bg-green-500 hover:bg-green-600 text-white">Chat on WhatsApp</Button>
+              <Button className="bg-[#25d366] hover:bg-[#1da851] text-white">Chat on WhatsApp</Button>
             </a>
           </div>
         </div>
@@ -574,7 +574,7 @@ export default function Home() {
         href="https://wa.me/2348113993291?text=Hi%20Cracks%20and%20Healing%2C%20I%27m%20interested%20in%20your%20Kintsugi%20services."
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-8 right-8 z-40 bg-green-500 hover:bg-green-600 text-white rounded-full p-4 shadow-xl transition-all duration-300 hover:scale-110"
+        className="fixed bottom-8 right-8 z-40 bg-[#25d366] hover:bg-[#1da851] text-white rounded-full p-4 shadow-xl transition-all duration-300 hover:scale-110"
         title="Chat with us on WhatsApp"
       >
         <MessageCircle className="w-6 h-6" />

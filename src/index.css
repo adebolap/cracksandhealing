@@ -15,6 +15,8 @@
     --muted: 30 15% 60%;
     --muted-foreground: 30 15% 45%;
     --border: 30 20% 88%;
+    --terra: 13 48% 56%;
+    --terra-foreground: 40 33% 98%;
   }
 
   * { box-sizing: border-box; }

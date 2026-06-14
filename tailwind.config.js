@@ -28,6 +28,10 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        terra: {
+          DEFAULT: "hsl(var(--terra))",
+          foreground: "hsl(var(--terra-foreground))",
+        },
       },
       fontFamily: {
         serif: ['"Playfair Display"', "Georgia", "serif"],
