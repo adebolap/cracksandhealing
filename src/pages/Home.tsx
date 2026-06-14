@@ -143,16 +143,16 @@ export default function Home() {
         <div className="relative container pb-16 pt-32">
           <div className="max-w-xl">
             <div className="inline-block mb-5 px-4 py-1.5 bg-accent/20 backdrop-blur-sm rounded-full text-accent text-sm font-bold border border-accent/30">
-              Restore Your Favourites
+              The Art of Repair
             </div>
             <h1 className="text-5xl lg:text-7xl font-bold text-white mb-5 leading-tight">
               Cracks &amp; <span className="text-accent">Healing</span>
             </h1>
             <p className="text-lg text-white/80 mb-4 leading-relaxed">
-              Transform broken ceramics into beautiful art. Premium Kintsugi kits and immersive sessions. Based in Lagos, Nigeria.
+              The Japanese believe that what has been broken and repaired becomes more beautiful for having been broken. We bring that practice to Lagos — through kits you use at home and sessions that stay with you.
             </p>
             <p className="text-accent font-semibold italic mb-8">
-              "Wholeness doesn't mean imperfections—it means no part left out."
+              "Wholeness doesn't mean no imperfections — it means no part left out."
             </p>
             <div className="flex gap-4 flex-wrap">
               <a href="#shop"><Button size="lg">Shop Now</Button></a>
