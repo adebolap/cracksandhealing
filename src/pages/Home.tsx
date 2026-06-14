@@ -16,7 +16,7 @@ const testimonials = [
     img: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663513933452/fWNnRpeZbww7L9TXKj2SnP/WhatsAppImage2026-04-10at13.04.19(2)_7ceaef3d.jpeg',
   },
   {
-    text: 'Every piece I buy from your store is precious. Quality, beauty, value for money — all at the top.',
+    text: 'Every piece I buy from your store is precious. Quality, beauty, value for money: all at the top.',
     author: 'Tolu M., Abuja',
     img: 'https://d2xsxph8kpxj0f.cloudfront.net/310519663513933452/fWNnRpeZbww7L9TXKj2SnP/WhatsAppImage2026-04-10at13.04.20_4e4692d8.jpeg',
   },
@@ -47,7 +47,7 @@ const faqs = [
   },
   {
     q: 'How far in advance do I need to book a session?',
-    a: 'At least 2 weeks for standard sessions. For groups of 10+, 4 weeks notice is appreciated. Last-minute availability — contact us via WhatsApp.',
+    a: 'At least 2 weeks for standard sessions. For groups of 10+, 4 weeks notice is appreciated. For last-minute availability, contact us via WhatsApp.',
   },
   {
     q: 'What payment methods do you accept?',
@@ -149,10 +149,10 @@ export default function Home() {
               Cracks &amp; <span className="text-accent">Healing</span>
             </h1>
             <p className="text-lg text-white/80 mb-4 leading-relaxed">
-              The Japanese believe that what has been broken and repaired becomes more beautiful for having been broken. We bring that practice to Lagos — through kits you use at home and sessions that stay with you.
+              The Japanese believe that what has been broken and repaired becomes more beautiful for having been broken. We bring that practice to Lagos: kits you use at home and sessions that stay with you.
             </p>
             <p className="text-accent font-semibold italic mb-4">
-              "Wholeness doesn't mean no imperfections — it means no part left out."
+              "Wholeness doesn't mean no imperfections. It means no part left out."
             </p>
             <p className="text-white/60 text-sm mb-8">Sessions run every Saturday, May–November. Spots go fast.</p>
             <div className="flex gap-4 flex-wrap">
@@ -176,7 +176,7 @@ export default function Home() {
           <div className="max-w-2xl mb-12">
             <p className="text-xs font-bold text-accent uppercase tracking-widest mb-3">Sessions &amp; Packages</p>
             <h2 className="text-3xl lg:text-4xl font-bold text-primary mb-3">Every kind of healing, priced honestly.</h2>
-            <p className="text-base text-foreground/70">Whether you're coming alone, with friends, or bringing your whole team — there's a session for you. All packages include materials, expert facilitation, and your take-home piece.</p>
+            <p className="text-base text-foreground/70">Whether you're coming alone, with friends, or bringing your whole team, there's a session for you. All packages include materials, expert facilitation, and your take-home piece.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
@@ -188,7 +188,7 @@ export default function Home() {
                   <Users className="w-5 h-5 text-accent" />
                 </div>
                 <CardTitle>Open Session</CardTitle>
-                <CardDescription>You'll arrive, choose a piece, and spend two hours repairing it with gold. No experience needed. You leave with something repaired — and something lighter.</CardDescription>
+                <CardDescription>You'll arrive, choose a piece, and spend two hours repairing it with gold. No experience needed. You leave with something repaired, and something lighter.</CardDescription>
               </CardHeader>
               <CardContent className="flex flex-col flex-1 justify-between gap-6">
                 <ul className="space-y-2 text-sm text-foreground/70">
@@ -197,7 +197,7 @@ export default function Home() {
                   <li className="flex gap-2"><span className="text-accent">✓</span> Take home your repaired piece</li>
                 </ul>
                 <blockquote className="border-l-2 border-terra pl-3 text-xs text-foreground/60 italic">
-                  "I almost cried. The intentionality in creating it was very evident." — Verified Customer
+                  "I almost cried. The intentionality in creating it was very evident."
                 </blockquote>
                 <div>
                   <p className="text-3xl font-bold text-primary mb-1">₦75,000 <span className="text-base font-normal text-muted-foreground">/ person</span></p>
@@ -209,7 +209,7 @@ export default function Home() {
                   >
                     Book a Spot
                   </button>
-                  <p className="text-xs text-center text-muted-foreground mt-2">Reserve with a 50% deposit — balance due the week of your session.</p>
+                  <p className="text-xs text-center text-muted-foreground mt-2">Reserve with a 50% deposit. Balance due the week of your session.</p>
                 </div>
               </CardContent>
             </Card>
@@ -221,7 +221,7 @@ export default function Home() {
                   <Heart className="w-5 h-5 text-accent" />
                 </div>
                 <CardTitle>Couples Session</CardTitle>
-                <CardDescription>An intimate, extended experience for two — with storytelling prompts and a paired reflection card.</CardDescription>
+                <CardDescription>An intimate, extended experience for two, with storytelling prompts and a paired reflection card.</CardDescription>
               </CardHeader>
               <CardContent className="flex flex-col flex-1 justify-between gap-6">
                 <ul className="space-y-2 text-sm text-foreground/70">
@@ -257,7 +257,7 @@ export default function Home() {
                 </ul>
                 <div>
                   <p className="text-3xl font-bold text-primary mb-1">₦75k–₦85k <span className="text-base font-normal text-muted-foreground">/ person</span></p>
-                  <p className="text-xs text-muted-foreground mb-3">Minimum 3 people — from ₦255,000</p>
+                  <p className="text-xs text-muted-foreground mb-3">Minimum 3 people, from ₦255,000</p>
                   <a href="https://wa.me/2348113993291?text=Hi%2C%20I%27d%20like%20to%20book%20a%20Friendship%20Date%20session." target="_blank" rel="noreferrer">
                     <Button className="w-full">Book via WhatsApp</Button>
                   </a>
@@ -299,7 +299,7 @@ export default function Home() {
                   <Gem className="w-5 h-5 text-accent" />
                 </div>
                 <CardTitle>Bridal Shower</CardTitle>
-                <CardDescription>The most intentional bridal experience we know how to give — curated for the bride who wants meaning, not just a moment.</CardDescription>
+                <CardDescription>The most intentional bridal experience we know how to give, curated for the bride who wants meaning, not just a moment.</CardDescription>
               </CardHeader>
               <CardContent className="flex flex-col flex-1 justify-between gap-6">
                 <ul className="space-y-2 text-sm text-foreground/70">
@@ -311,7 +311,7 @@ export default function Home() {
                 </ul>
                 <div>
                   <p className="text-3xl font-bold text-primary mb-1">₦95,000 <span className="text-base font-normal text-muted-foreground">/ person</span></p>
-                  <p className="text-xs text-muted-foreground mb-3">Minimum 5 people — from ₦475,000</p>
+                  <p className="text-xs text-muted-foreground mb-3">Minimum 5 people, from ₦475,000</p>
                   <a href="https://wa.me/2348113993291?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20the%20Bridal%20Shower%20package." target="_blank" rel="noreferrer">
                     <Button className="w-full">Enquire via WhatsApp</Button>
                   </a>
@@ -326,7 +326,7 @@ export default function Home() {
                   <Building2 className="w-5 h-5 text-accent" />
                 </div>
                 <CardTitle>Team Bonding / Corporate</CardTitle>
-                <CardDescription>Built around one idea: the cracks in a team aren't weaknesses — they're where the growth happened.</CardDescription>
+                <CardDescription>Built around one idea: the cracks in a team aren't weaknesses. They're where the growth happened.</CardDescription>
               </CardHeader>
               <CardContent className="flex flex-col flex-1 justify-between gap-6">
                 <ul className="space-y-2 text-sm text-foreground/70">
@@ -362,7 +362,7 @@ export default function Home() {
                   <div className="space-y-4">
                     <div className="flex justify-between items-center p-4 bg-white rounded-xl border border-border">
                       <div>
-                        <p className="font-semibold text-primary text-sm">Solo — 1:1 with Kelly</p>
+                        <p className="font-semibold text-primary text-sm">Solo: 1:1 with Kelly</p>
                         <p className="text-xs text-muted-foreground">Private, bespoke session</p>
                       </div>
                       <div className="text-right">
@@ -374,7 +374,7 @@ export default function Home() {
                     </div>
                     <div className="flex justify-between items-center p-4 bg-white rounded-xl border border-border">
                       <div>
-                        <p className="font-semibold text-primary text-sm">Healing Circle — 2–3 people</p>
+                        <p className="font-semibold text-primary text-sm">Healing Circle (2–3 people)</p>
                         <p className="text-xs text-muted-foreground">Facilitated by Kelly Praise</p>
                       </div>
                       <div className="text-right">
@@ -392,7 +392,7 @@ export default function Home() {
           </div>
 
           <p className="text-center text-sm text-muted-foreground mt-8">
-            All private packages are reserved with a 50% deposit — the balance is due 48 hours before your session.
+            All private packages are reserved with a 50% deposit. The balance is due 48 hours before your session.
           </p>
         </div>
       </section>
@@ -403,19 +403,19 @@ export default function Home() {
           <div className="mb-10">
             <h2 className="text-3xl lg:text-4xl font-bold text-primary mb-3">Shop Our DIY Kits</h2>
             <p className="text-base text-foreground/70 max-w-2xl">
-              Everything you need for up to 3 repairs — non-toxic powder, epoxy glue, brushes, a practice bowl, and a step-by-step manual.
+              Everything you need for up to 3 repairs: non-toxic powder, epoxy glue, brushes, a practice bowl, and a step-by-step manual.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
               {
-                name: 'Kintsugi DIY Repair Kit — Gold',
+                name: 'Kintsugi DIY Repair Kit (Gold)',
                 price: '₦42,000',
                 img: 'https://www.kellypraise.com/cdn/shop/files/9496B945-DEA4-41F8-B40F-06B5F624D948.jpg?v=1731190498&width=800',
                 link: 'https://www.kellypraise.com/products/kitsungi-diy-repair-kit?variant=46058959569141',
               },
               {
-                name: 'Kintsugi DIY Repair Kit — Silver',
+                name: 'Kintsugi DIY Repair Kit (Silver)',
                 price: '₦42,000',
                 img: 'https://www.kellypraise.com/cdn/shop/files/B0B2C2B8-007D-47AC-9F56-689164B4FB60.jpg?v=1731190542&width=800',
                 link: 'https://www.kellypraise.com/products/kitsungi-diy-repair-kit',
