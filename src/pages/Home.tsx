@@ -103,7 +103,7 @@ export default function Home() {
       {/* Navigation */}
       <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-border">
         <div className="container flex items-center justify-between h-16">
-          <a href="#top" className="text-xl font-bold text-primary font-serif">Cracks & Healing</a>
+          <a href="#top" className="text-xl font-bold text-primary font-serif tracking-wide">C&amp;H</a>
 
           <button
             className="md:hidden flex flex-col gap-1.5 p-2"
@@ -371,7 +371,7 @@ export default function Home() {
                     <div className="flex justify-between items-center p-4 bg-white rounded-xl border border-border">
                       <div>
                         <p className="font-semibold text-primary text-sm">Healing Circle — 2–3 people</p>
-                        <p className="text-xs text-muted-foreground">Shared intentional experience</p>
+                        <p className="text-xs text-muted-foreground">Facilitated by an expert</p>
                       </div>
                       <div className="text-right">
                         <p className="text-xl font-bold text-primary">₦95,000<span className="text-sm font-normal text-muted-foreground">/person</span></p>
@@ -432,14 +432,6 @@ export default function Home() {
                 </CardContent>
               </Card>
             ))}
-          </div>
-          <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="https://www.kellypraise.com" target="_blank" rel="noopener noreferrer">
-              <Button size="lg">View Full Shop</Button>
-            </a>
-            <a href="https://www.kellypraise.com/collections" target="_blank" rel="noopener noreferrer">
-              <Button size="lg" variant="outline">Explore Jewellery Collection</Button>
-            </a>
           </div>
         </div>
       </section>
