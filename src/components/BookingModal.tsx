@@ -90,14 +90,18 @@ export default function BookingModal({ open, defaultPackage, onClose }: Props) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
       })
+      const text = await res.text()
       if (res.ok) {
         setDone(true)
       } else {
-        const err = await res.json()
-        toast.error(err.error || 'Something went wrong. Please try again.')
+        let msg = 'Something went wrong. Please try again.'
+        try { msg = JSON.parse(text).error || msg } catch { msg = `Error ${res.status}: ${text.slice(0, 120)}` }
+        toast.error(msg)
+        console.error('Book API error:', res.status, text)
       }
-    } catch {
-      toast.error('Network error. Please try again.')
+    } catch (err) {
+      console.error('Book fetch error:', err)
+      toast.error('Could not reach the server. Please try again.')
     } finally {
       setSubmitting(false)
     }
