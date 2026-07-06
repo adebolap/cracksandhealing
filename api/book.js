@@ -1,3 +1,15 @@
+const nodemailer = require('nodemailer');
+
+function getTransport() {
+  return nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: process.env.GMAIL_USER,
+      pass: process.env.GMAIL_APP_PASSWORD,
+    },
+  });
+}
+
 function depositAmount(pkg) {
   const prices = {
     'Open Session': 75000,
@@ -103,41 +115,28 @@ module.exports = async function handler(req, res) {
 
   const html = buildHtml({ name, pkg: pkg || 'Open Session', date, people: people || '1', bookingRef, deposit });
 
-  // Email to customer
-  const customerRes = await fetch('https://api.resend.com/emails', {
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${process.env.RESEND_API_KEY}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      from: 'Cracks & Healing <onboarding@resend.dev>',
-      to: [`${name} <${email}>`],
+  const transport = getTransport();
+
+  try {
+    // Confirmation email to customer
+    await transport.sendMail({
+      from: `"Cracks & Healing" <${process.env.GMAIL_USER}>`,
+      to: `${name} <${email}>`,
       subject: `You're registered - Cracks & Healing | ${pkg || 'Open Session'}`,
       html,
-    }),
-  });
+    });
 
-  if (!customerRes.ok) {
-    const err = await customerRes.text();
-    console.error('Resend error:', err);
-    return res.status(500).json({ error: err });
-  }
-
-  // Notification to Kelly
-  await fetch('https://api.resend.com/emails', {
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${process.env.RESEND_API_KEY}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      from: 'Cracks & Healing <onboarding@resend.dev>',
-      to: ['kellyraise@gmail.com'],
+    // Notification to Kelly
+    await transport.sendMail({
+      from: `"Cracks & Healing Bookings" <${process.env.GMAIL_USER}>`,
+      to: process.env.GMAIL_USER,
       subject: `New booking: ${pkg} — ${name} (${date})`,
       html: `<p><b>Name:</b> ${name}<br><b>Email:</b> ${email}<br><b>WhatsApp:</b> ${whatsapp || 'not provided'}<br><b>Package:</b> ${pkg}<br><b>Date:</b> ${date}<br><b>People:</b> ${people}<br><b>Notes:</b> ${notes || 'none'}<br><b>Ref:</b> ${bookingRef}</p>`,
-    }),
-  });
+    });
+  } catch (err) {
+    console.error('Gmail error:', err.message);
+    return res.status(500).json({ error: err.message });
+  }
 
   return res.status(200).json({ ok: true, ref: bookingRef });
 };
