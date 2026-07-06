@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { toast } from 'sonner'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
@@ -7,7 +7,7 @@ import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
 import { Mail, Phone, MapPin, Star, Sparkles, Heart, Users, MessageCircle, Gem, HeartHandshake, Building2, Flame } from 'lucide-react'
-import { getCalApi } from '@calcom/embed-react'
+import BookingModal from '@/components/BookingModal'
 
 const testimonials = [
   {
@@ -59,13 +59,13 @@ export default function Home() {
   const [form, setForm] = useState({ name: '', email: '', message: '' })
   const [submitting, setSubmitting] = useState(false)
   const [navOpen, setNavOpen] = useState(false)
+  const [bookingOpen, setBookingOpen] = useState(false)
+  const [bookingPackage, setBookingPackage] = useState<string | undefined>(undefined)
 
-  useEffect(() => {
-    (async () => {
-      const cal = await getCalApi({ namespace: 'cracksandhealing' })
-      cal('ui', { theme: 'light', hideEventTypeDetails: false, layout: 'month_view' })
-    })()
-  }, [])
+  const openBooking = (pkg?: string) => {
+    setBookingPackage(pkg)
+    setBookingOpen(true)
+  }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }))
@@ -120,11 +120,8 @@ export default function Home() {
             <a href="#shop" className="text-sm font-semibold text-muted-foreground hover:text-primary capitalize transition-colors" onClick={() => setNavOpen(false)}>Shop</a>
             <a href="#contact" className="text-sm font-semibold text-muted-foreground hover:text-primary capitalize transition-colors" onClick={() => setNavOpen(false)}>Contact</a>
             <button
-              data-cal-namespace="cracksandhealing"
-              data-cal-link="cracksandhealing/120mins"
-              data-cal-config='{"layout":"month_view","theme":"light"}'
               className="text-sm px-4 py-2 bg-accent text-primary rounded-lg font-bold hover:bg-accent/90 transition-colors text-left md:text-center"
-              onClick={() => setNavOpen(false)}
+              onClick={() => { setNavOpen(false); openBooking() }}
             >
               Book Now
             </button>
@@ -158,9 +155,7 @@ export default function Home() {
             <div className="flex gap-4 flex-wrap">
               <a href="#shop"><Button size="lg">Shop Now</Button></a>
               <button
-                data-cal-namespace="cracksandhealing"
-                data-cal-link="cracksandhealing/120mins"
-                data-cal-config='{"layout":"month_view","theme":"light"}'
+                onClick={() => openBooking()}
                 className="inline-flex items-center justify-center h-11 px-8 rounded-md border border-white text-white font-semibold text-sm hover:bg-white hover:text-primary transition-colors"
               >
                 Book a Session
@@ -202,9 +197,7 @@ export default function Home() {
                 <div>
                   <p className="text-3xl font-bold text-primary mb-1">₦75,000 <span className="text-base font-normal text-muted-foreground">/ person</span></p>
                   <button
-                    data-cal-namespace="cracksandhealing"
-                    data-cal-link="cracksandhealing/120mins"
-                    data-cal-config='{"layout":"month_view","theme":"light"}'
+                    onClick={() => openBooking('Open Session')}
                     className="w-full mt-3 inline-flex items-center justify-center h-10 px-4 rounded-md bg-accent text-primary font-bold text-sm hover:bg-accent/90 transition-colors"
                   >
                     Book a Spot
@@ -579,6 +572,12 @@ export default function Home() {
       >
         <MessageCircle className="w-6 h-6" />
       </a>
+
+      <BookingModal
+        open={bookingOpen}
+        defaultPackage={bookingPackage}
+        onClose={() => setBookingOpen(false)}
+      />
     </div>
   )
 }
