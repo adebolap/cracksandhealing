@@ -109,7 +109,7 @@ function buildHtml({ name, pkg, date, people, bookingRef, total, deposit }) {
   <div style="background-color:#242420;margin:0 40px 8px;border-radius:4px;padding:28px 28px 20px;">
     <div style="font-size:10px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#6e6b5e;margin-bottom:16px;">Payment Details</div>
     <hr style="border:none;border-top:1px solid #38362d;margin-bottom:20px;"/>
-    <p style="font-size:14px;color:#9e9880;line-height:1.7;margin-bottom:24px;">To confirm your spot, transfer the workshop fee to the account below and send proof of payment to <a href="mailto:kellyraise@gmail.com" style="color:#c9a96e;text-decoration:none;">kellyraise@gmail.com</a>.</p>
+    <p style="font-size:14px;color:#9e9880;line-height:1.7;margin-bottom:24px;">To confirm your spot, transfer the workshop fee to the account below and send proof of payment to <a href="mailto:cracksandhealing@gmail.com" style="color:#c9a96e;text-decoration:none;">cracksandhealing@gmail.com</a>.</p>
     ${row('Bank', 'Zenith Bank')}
     ${row('Account Name', 'Kelly Praise Craft')}
     ${rowMono('Account Number', '1017408775')}
