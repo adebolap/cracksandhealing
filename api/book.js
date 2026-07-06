@@ -10,24 +10,46 @@ function getTransport() {
   });
 }
 
-function depositAmount(pkg) {
-  const prices = {
-    'Open Session': 75000,
-    'Couples Session': 185000,
-    'Friendship Date': 255000,
-    'Birthday Package': 305000,
-    'Bridal Shower': 475000,
-    'Team Bonding': 600000,
-    'Healing Session (Solo)': 120000,
-    'Healing Circle': 190000,
-  };
-  const match = Object.entries(prices).find(([k]) => pkg.toLowerCase().includes(k.toLowerCase()));
-  const total = match ? match[1] : 75000;
-  return { full: `₦${total.toLocaleString('en-NG')}`, deposit: `₦${(total / 2).toLocaleString('en-NG')}` };
+// Per-person packages multiply by guest count; fixed packages ignore it
+const PER_PERSON = {
+  'Open Session': 75000,
+  'Bridal Shower': 95000,
+  'Healing Circle': 95000,
+};
+const FIXED = {
+  'Couples Session': 185000,
+  'Friendship Date': 80000,   // per person, min 3
+  'Birthday Package': 80000,  // per person (honoree at ₦65k avg'd in)
+  'Team Bonding': 75000,      // per head (flat fee added separately)
+  'Healing Session (Solo)': 120000,
+};
+const TEAM_FLAT = 150000; // added on top of per-head for Team Bonding
+
+function calculateTotal(pkg, people) {
+  const n = Math.max(1, parseInt(people) || 1);
+  const pkgKey = Object.keys({ ...PER_PERSON, ...FIXED }).find(k => pkg.toLowerCase().includes(k.toLowerCase()));
+  if (!pkgKey) return 75000 * n;
+  if (pkgKey === 'Team Bonding') return TEAM_FLAT + (FIXED['Team Bonding'] * n);
+  if (PER_PERSON[pkgKey]) return PER_PERSON[pkgKey] * n;
+  return FIXED[pkgKey] * n;
 }
 
-function ref() {
-  return 'CK-' + Math.random().toString(36).slice(2, 10).toUpperCase();
+function fmt(n) { return '₦' + n.toLocaleString('en-NG'); }
+
+function generateRef(date, pkg) {
+  // Format: CK-DDMMYY-PKG-XXX  e.g. CK-110726-OS-4A2
+  const d = new Date();
+  const dd = String(d.getDate()).padStart(2, '0');
+  const mm = String(d.getMonth() + 1).padStart(2, '0');
+  const yy = String(d.getFullYear()).slice(2);
+  const pkgCodes = {
+    'Open Session': 'OS', 'Couples Session': 'CP', 'Friendship Date': 'FD',
+    'Birthday Package': 'BD', 'Bridal Shower': 'BS', 'Team Bonding': 'TB',
+    'Healing Session': 'HS', 'Healing Circle': 'HC',
+  };
+  const code = Object.entries(pkgCodes).find(([k]) => pkg.toLowerCase().includes(k.toLowerCase()))?.[1] || 'CK';
+  const rand = Math.random().toString(36).slice(2, 5).toUpperCase();
+  return `CK-${dd}${mm}${yy}-${code}-${rand}`;
 }
 
 function row(label, value) {
@@ -51,7 +73,7 @@ function rowAmount(label, value) {
   </div>`;
 }
 
-function buildHtml({ name, pkg, date, people, bookingRef, deposit }) {
+function buildHtml({ name, pkg, date, people, bookingRef, total, deposit }) {
   const badgeDate = date.toUpperCase();
   const shortDate = date.split(',').slice(1).join(',').trim();
 
@@ -69,12 +91,12 @@ function buildHtml({ name, pkg, date, people, bookingRef, deposit }) {
   <div style="background-color:#242420;margin:0 40px 8px;border-radius:4px;padding:28px 28px 20px;">
     <div style="font-size:10px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#6e6b5e;margin-bottom:16px;">Workshop Details</div>
     <hr style="border:none;border-top:1px solid #38362d;margin-bottom:20px;"/>
-    ${row('Workshop', 'Cracks &amp; Healing &mdash; Kintsugi Repair')}
+    ${row('Package', pkg)}
     ${row('Date', date)}
     ${row('Time', '11:00 AM')}
     ${row('Duration', '2 hours')}
     ${row('Venue', 'Artzmania, Plot 9B Block 56, Lekki Phase 1, Lagos')}
-    ${row('Guests', people + (people === '1' ? ' person' : ' people'))}
+    ${row('Guests', people + (parseInt(people) === 1 ? ' person' : ' people'))}
     ${rowMono('Reference', bookingRef)}
   </div>
 
@@ -85,7 +107,8 @@ function buildHtml({ name, pkg, date, people, bookingRef, deposit }) {
     ${row('Bank', 'Zenith Bank')}
     ${row('Account Name', 'Kelly Praise Craft')}
     ${rowMono('Account Number', '1017408775')}
-    ${rowAmount('Amount', deposit)}
+    ${row('Total session fee', total)}
+    ${rowAmount('50% Deposit to confirm', deposit)}
   </div>
 
   <div style="background-color:#1e1e18;border:1px solid #38362d;margin:0 40px 40px;border-radius:4px;padding:20px 24px;">
@@ -110,10 +133,16 @@ module.exports = async function handler(req, res) {
     return res.status(400).json({ error: 'name, email and date are required' });
   }
 
-  const bookingRef = ref();
-  const { deposit } = depositAmount(pkg || 'Open Session');
+  const selectedPkg = pkg || 'Open Session';
+  const guestCount = people || '1';
+  const totalAmt = calculateTotal(selectedPkg, guestCount);
+  const depositAmt = Math.round(totalAmt / 2);
+  const bookingRef = generateRef(date, selectedPkg);
 
-  const html = buildHtml({ name, pkg: pkg || 'Open Session', date, people: people || '1', bookingRef, deposit });
+  const html = buildHtml({
+    name, pkg: selectedPkg, date, people: guestCount, bookingRef,
+    total: fmt(totalAmt), deposit: fmt(depositAmt),
+  });
 
   const transport = getTransport();
 
