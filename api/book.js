@@ -53,24 +53,30 @@ function generateRef(date, pkg) {
 }
 
 function row(label, value) {
-  return `<div style="display:flex;justify-content:space-between;align-items:flex-start;padding:10px 0;border-bottom:1px solid #2e2c25;gap:16px;">
-    <span style="font-size:13px;color:#6e6b5e;flex-shrink:0;">${label}</span>
-    <span style="font-size:14px;color:#d4cfc4;text-align:right;font-weight:500;">${value}</span>
-  </div>`;
+  return `<table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-bottom:1px solid #2e2c25;">
+    <tr>
+      <td style="font-size:13px;color:#6e6b5e;padding:10px 0;width:45%;vertical-align:top;">${label}</td>
+      <td style="font-size:14px;color:#d4cfc4;padding:10px 0;text-align:right;font-weight:500;vertical-align:top;">${value}</td>
+    </tr>
+  </table>`;
 }
 
 function rowMono(label, value) {
-  return `<div style="display:flex;justify-content:space-between;align-items:flex-start;padding:10px 0;border-bottom:1px solid #2e2c25;gap:16px;">
-    <span style="font-size:13px;color:#6e6b5e;flex-shrink:0;">${label}</span>
-    <span style="font-size:14px;color:#d4cfc4;text-align:right;font-weight:500;font-family:'Courier New',monospace;letter-spacing:0.06em;">${value}</span>
-  </div>`;
+  return `<table width="100%" cellpadding="0" cellspacing="0" border="0" style="border-bottom:1px solid #2e2c25;">
+    <tr>
+      <td style="font-size:13px;color:#6e6b5e;padding:10px 0;width:45%;vertical-align:top;">${label}</td>
+      <td style="font-size:14px;color:#d4cfc4;padding:10px 0;text-align:right;font-weight:500;font-family:'Courier New',monospace;letter-spacing:0.06em;vertical-align:top;">${value}</td>
+    </tr>
+  </table>`;
 }
 
 function rowAmount(label, value) {
-  return `<div style="display:flex;justify-content:space-between;align-items:flex-start;padding:10px 0;gap:16px;">
-    <span style="font-size:13px;color:#6e6b5e;flex-shrink:0;">${label}</span>
-    <span style="font-size:20px;color:#f0ebe1;font-weight:700;">${value}</span>
-  </div>`;
+  return `<table width="100%" cellpadding="0" cellspacing="0" border="0">
+    <tr>
+      <td style="font-size:13px;color:#6e6b5e;padding:10px 0;width:55%;vertical-align:middle;">${label}</td>
+      <td style="font-size:20px;color:#f0ebe1;padding:10px 0;text-align:right;font-weight:700;vertical-align:middle;">${value}</td>
+    </tr>
+  </table>`;
 }
 
 function buildHtml({ name, pkg, date, people, bookingRef, total, deposit }) {
