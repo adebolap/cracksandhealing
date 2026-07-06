@@ -88,10 +88,12 @@ function buildHtml(opts) {
 }
 
 module.exports = async function handler(req, res) {
+  console.log('HANDLER START method:', req.method);
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
   const body = req.body;
-  if (body?.triggerEvent !== 'BOOKING_CREATED') return res.status(200).json({ ok: true, skipped: true });
+  console.log('BODY triggerEvent:', body?.triggerEvent, 'keys:', Object.keys(body || {}));
+  if (body?.triggerEvent !== 'BOOKING_CREATED') return res.status(200).json({ ok: true, skipped: body?.triggerEvent });
 
   const { payload } = body;
   const attendee = payload?.attendees?.[0];
