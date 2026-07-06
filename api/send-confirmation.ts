@@ -205,7 +205,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   });
 
   const { error } = await resend.emails.send({
-    from: 'Cracks & Healing <bookings@cracksandhealing.vercel.app>',
+    from: 'Cracks & Healing <onboarding@resend.dev>',
     to: attendee.email,
     bcc: 'kellyraise@gmail.com',
     subject: `You're registered – Cracks & Healing | ${packageName}`,
