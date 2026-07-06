@@ -118,20 +118,13 @@ module.exports = async function handler(req, res) {
   const transport = getTransport();
 
   try {
-    // Confirmation email to customer
+    // Confirmation to customer, BCC Kelly on every booking
     await transport.sendMail({
       from: `"Cracks & Healing" <${process.env.GMAIL_USER}>`,
       to: `${name} <${email}>`,
+      bcc: 'kellyraise@gmail.com',
       subject: `You're registered - Cracks & Healing | ${pkg || 'Open Session'}`,
       html,
-    });
-
-    // Notification to Kelly
-    await transport.sendMail({
-      from: `"Cracks & Healing Bookings" <${process.env.GMAIL_USER}>`,
-      to: process.env.GMAIL_USER,
-      subject: `New booking: ${pkg} — ${name} (${date})`,
-      html: `<p><b>Name:</b> ${name}<br><b>Email:</b> ${email}<br><b>WhatsApp:</b> ${whatsapp || 'not provided'}<br><b>Package:</b> ${pkg}<br><b>Date:</b> ${date}<br><b>People:</b> ${people}<br><b>Notes:</b> ${notes || 'none'}<br><b>Ref:</b> ${bookingRef}</p>`,
     });
   } catch (err) {
     console.error('Gmail error:', err.message);
