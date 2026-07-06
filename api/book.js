@@ -121,7 +121,7 @@ module.exports = async function handler(req, res) {
   if (!customerRes.ok) {
     const err = await customerRes.text();
     console.error('Resend error:', err);
-    return res.status(500).json({ error: 'Failed to send email' });
+    return res.status(500).json({ error: err });
   }
 
   // Notification to Kelly
