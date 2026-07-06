@@ -1,20 +1,6 @@
-import type { VercelRequest, VercelResponse } from '@vercel/node';
-
-interface CalAttendee { name: string; email: string; }
-interface CalWebhookPayload {
-  triggerEvent: string;
-  payload: {
-    title: string;
-    startTime: string;
-    uid: string;
-    attendees: CalAttendee[];
-    location?: string;
-  };
-}
-
-function formatDate(iso: string) {
+function formatDate(iso) {
   const d = new Date(iso);
-  const opts = { timeZone: 'Africa/Lagos' } as const;
+  const opts = { timeZone: 'Africa/Lagos' };
   return {
     full: d.toLocaleDateString('en-NG', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', ...opts }),
     short: d.toLocaleDateString('en-NG', { month: 'long', day: 'numeric', ...opts }),
@@ -23,8 +9,8 @@ function formatDate(iso: string) {
   };
 }
 
-function depositAmount(pkg: string): string {
-  const prices: Record<string, number> = {
+function depositAmount(pkg) {
+  const prices = {
     'Open Session': 75000, 'Couples Session': 185000, 'Friendship Date': 255000,
     'Birthday Package': 305000, 'Bridal Shower': 475000, 'Team Bonding': 600000,
     'Healing Session': 120000, 'Healing Circle': 190000,
@@ -34,32 +20,29 @@ function depositAmount(pkg: string): string {
   return `₦${(total / 2).toLocaleString('en-NG')}`;
 }
 
-function row(label: string, value: string) {
+function row(label, value) {
   return `<div style="display:flex;justify-content:space-between;align-items:flex-start;padding:10px 0;border-bottom:1px solid #2e2c25;gap:16px;">
     <span style="font-size:13px;color:#6e6b5e;flex-shrink:0;">${label}</span>
     <span style="font-size:14px;color:#d4cfc4;text-align:right;font-weight:500;">${value}</span>
   </div>`;
 }
 
-function rowMono(label: string, value: string) {
+function rowMono(label, value) {
   return `<div style="display:flex;justify-content:space-between;align-items:flex-start;padding:10px 0;border-bottom:1px solid #2e2c25;gap:16px;">
     <span style="font-size:13px;color:#6e6b5e;flex-shrink:0;">${label}</span>
     <span style="font-size:14px;color:#d4cfc4;text-align:right;font-weight:500;font-family:'Courier New',monospace;letter-spacing:0.06em;">${value}</span>
   </div>`;
 }
 
-function rowAmount(label: string, value: string) {
+function rowAmount(label, value) {
   return `<div style="display:flex;justify-content:space-between;align-items:flex-start;padding:10px 0;gap:16px;">
     <span style="font-size:13px;color:#6e6b5e;flex-shrink:0;">${label}</span>
     <span style="font-size:20px;color:#f0ebe1;font-weight:700;">${value}</span>
   </div>`;
 }
 
-function buildHtml(opts: {
-  name: string; packageName: string; fullDate: string; shortDate: string;
-  badgeDate: string; sessionTime: string; venue: string; ref: string; deposit: string;
-}) {
-  return `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/><title>You're registered – Cracks & Healing</title></head>
+function buildHtml(opts) {
+  return `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/><title>You're registered - Cracks & Healing</title></head>
 <body style="margin:0;padding:0;background-color:#1e1e18;font-family:Arial,sans-serif;color:#d4cfc4;">
 <div style="max-width:600px;margin:0 auto;padding:40px 20px;">
 <div style="background-color:#2b2b22;border-radius:4px;overflow:hidden;">
@@ -104,32 +87,10 @@ function buildHtml(opts: {
 </body></html>`;
 }
 
-async function sendEmail(to: string, toName: string, subject: string, html: string, bcc: string) {
-  const res = await fetch('https://api.resend.com/emails', {
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${process.env.RESEND_API_KEY}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      from: 'Cracks & Healing <onboarding@resend.dev>',
-      to: [`${toName} <${to}>`],
-      bcc: [bcc],
-      subject,
-      html,
-    }),
-  });
-  if (!res.ok) {
-    const err = await res.text();
-    throw new Error(`Resend error ${res.status}: ${err}`);
-  }
-  return res.json();
-}
-
-export default async function handler(req: VercelRequest, res: VercelResponse) {
+module.exports = async function handler(req, res) {
   if (req.method !== 'POST') return res.status(405).json({ error: 'Method not allowed' });
 
-  const body = req.body as CalWebhookPayload;
+  const body = req.body;
   if (body?.triggerEvent !== 'BOOKING_CREATED') return res.status(200).json({ ok: true, skipped: true });
 
   const { payload } = body;
@@ -137,9 +98,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   if (!attendee?.email) return res.status(400).json({ error: 'No attendee email' });
 
   const dates = formatDate(payload.startTime);
-  const packageName = payload.title ?? 'Kintsugi Session';
-  const venue = payload.location ?? 'Artzmania, Lekki Phase 1, Lagos';
-  const ref = `CK-${(payload.uid ?? 'BOOKING').slice(0, 8).toUpperCase()}`;
+  const packageName = payload.title || 'Kintsugi Session';
+  const venue = payload.location || 'Artzmania, Lekki Phase 1, Lagos';
+  const ref = `CK-${(payload.uid || 'BOOKING').slice(0, 8).toUpperCase()}`;
   const deposit = depositAmount(packageName);
 
   const html = buildHtml({
@@ -155,17 +116,29 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   });
 
   try {
-    await sendEmail(
-      attendee.email,
-      attendee.name,
-      `You're registered – Cracks & Healing | ${packageName}`,
-      html,
-      'kellyraise@gmail.com',
-    );
+    const resendRes = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${process.env.RESEND_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: 'Cracks & Healing <onboarding@resend.dev>',
+        to: [`${attendee.name} <${attendee.email}>`],
+        bcc: ['kellyraise@gmail.com'],
+        subject: `You're registered - Cracks & Healing | ${packageName}`,
+        html,
+      }),
+    });
+
+    if (!resendRes.ok) {
+      const err = await resendRes.text();
+      throw new Error(`Resend ${resendRes.status}: ${err}`);
+    }
+
     return res.status(200).json({ ok: true });
-  } catch (err: unknown) {
-    const message = err instanceof Error ? err.message : String(err);
-    console.error('Email error:', message);
-    return res.status(500).json({ error: message });
+  } catch (err) {
+    console.error('Email error:', err.message);
+    return res.status(500).json({ error: err.message });
   }
-}
+};
