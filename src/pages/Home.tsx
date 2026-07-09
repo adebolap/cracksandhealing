@@ -6,7 +6,7 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
-import { Mail, Phone, MapPin, Star, Sparkles, Heart, Users, MessageCircle, Gem, HeartHandshake, Building2, Flame } from 'lucide-react'
+import { Mail, Phone, MapPin, Star, Sparkles, Heart, Users, MessageCircle, Gem, HeartHandshake, Building2 } from 'lucide-react'
 import BookingModal from '@/components/BookingModal'
 
 const testimonials = [
@@ -35,7 +35,7 @@ const testimonials = [
 const faqs = [
   {
     q: "What's included in the Kintsugi DIY Repair Kit?",
-    a: 'Each kit includes: non-toxic gold or silver powder, a mixing stick, 20ml epoxy glue, a mixing bowl, 2 brushes, a ceramic practice bowl, protective gloves, a step-by-step manual, and keepsake stickers. Enough for up to 3 repairs.',
+    a: 'Each kit includes: non-toxic gold or silver powder, a mixing stick, 25ml epoxy glue, a mixing bowl, 2 brushes, a ceramic practice bowl, protective gloves, a step-by-step manual, and keepsake stickers. Enough for up to 3 repairs.',
   },
   {
     q: 'Is Kintsugi difficult? Do I need prior experience?',
@@ -47,11 +47,11 @@ const faqs = [
   },
   {
     q: 'How far in advance do I need to book a session?',
-    a: 'At least 2 weeks for standard sessions. For groups of 10+, 4 weeks notice is appreciated. For last-minute availability, contact us via WhatsApp.',
+    a: 'Open sessions require at least 72 hours (3 days) notice. For Private 1-on-1 and Bond Together (corporate) sessions, reach out via WhatsApp to discuss availability and confirm your date. For groups of 10+, 4 weeks notice is appreciated.',
   },
   {
     q: 'What payment methods do you accept?',
-    a: 'Credit/debit cards (Visa, Mastercard) and bank transfers via Paystack. A 50% non-refundable deposit secures your session booking.',
+    a: 'Credit/debit cards (Visa, Mastercard) and bank transfers via Paystack. Open, Couples, Bond Together, and Private sessions require full payment to confirm. Friendship Date and Golden Hour require a 50% non-refundable deposit, with the balance due 5 business days before your session.',
   },
 ]
 
@@ -175,223 +175,217 @@ export default function Home() {
               <span className="block w-6 h-px bg-accent" />
               <p className="text-xs font-bold text-accent uppercase tracking-[0.2em]">Sessions &amp; Packages</p>
             </div>
-            <h2 className="text-3xl lg:text-4xl font-bold text-primary mb-4 italic">Every kind of healing, priced honestly.</h2>
+            <h2 className="text-3xl lg:text-4xl font-bold text-primary mb-3 italic">Every kind of healing, priced honestly.</h2>
+            <p className="text-base text-foreground/60 italic mb-3">For anyone who wants to slow down, make something beautiful, and leave with a piece that is entirely their own.</p>
             <p className="text-base text-foreground/70">Whether you're coming alone, with friends, or bringing your whole team, there's a session for you. All packages include materials, expert facilitation, and your take-home piece.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
 
-            {/* Open Session */}
+            {/* 1. Open */}
             <Card className="border-border hover:shadow-lg transition-all duration-300 hover:border-accent/40 flex flex-col">
               <CardHeader>
                 <div className="w-11 h-11 rounded-lg bg-accent/10 flex items-center justify-center mb-3">
                   <Users className="w-5 h-5 text-accent" />
                 </div>
-                <CardTitle>Open Session</CardTitle>
-                <CardDescription>You'll arrive, choose a piece, and spend two hours repairing it with gold. No experience needed. You leave with something repaired, and something lighter.</CardDescription>
+                <CardTitle>Open</CardTitle>
+                <CardDescription>For anyone who wants to slow down, make something beautiful, and leave with a piece that is entirely their own. No experience needed.</CardDescription>
               </CardHeader>
               <CardContent className="flex flex-col flex-1 justify-between gap-6">
                 <ul className="space-y-2 text-sm text-foreground/70">
-                  <li className="flex gap-2"><span className="text-accent">✓</span> Saturdays only · Max 8 people per session</li>
-                  <li className="flex gap-2"><span className="text-accent">✓</span> 2 hrs · Kit, instruction &amp; refreshments included</li>
-                  <li className="flex gap-2"><span className="text-accent">✓</span> Take home your repaired piece</li>
+                  <li className="flex gap-2"><span className="text-accent">✓</span> 2 hour guided kintsugi session</li>
+                  <li className="flex gap-2"><span className="text-accent">✓</span> Full kintsugi kit · Welcome drink</li>
+                  <li className="flex gap-2"><span className="text-accent">✓</span> Light bite (pastry or sandwich)</li>
+                  <li className="flex gap-2"><span className="text-accent">✓</span> Step-by-step guidance throughout</li>
+                  <li className="flex gap-2"><span className="text-accent">✓</span> Finished piece to take home</li>
                 </ul>
-                <blockquote className="border-l-2 border-terra pl-3 text-xs text-foreground/60 italic">
-                  "I almost cried. The intentionality in creating it was very evident."
-                </blockquote>
                 <div>
-                  <p className="text-3xl font-bold text-primary mb-1">₦75,000 <span className="text-base font-normal text-muted-foreground">/ person</span></p>
+                  <p className="text-3xl font-bold text-primary mb-1">₦79,500 <span className="text-base font-normal text-muted-foreground">/ person</span></p>
+                  <p className="text-xs text-muted-foreground mb-1">Saturdays only · Open to all · No experience needed</p>
+                  <p className="text-xs text-muted-foreground mb-3">Add-on: Elevated refreshments +₦15,000/person · Off-site +₦80,000</p>
                   <button
-                    onClick={() => openBooking('Open Session')}
-                    className="w-full mt-3 inline-flex items-center justify-center h-10 px-4 rounded-md bg-accent text-primary font-bold text-sm hover:bg-accent/90 transition-colors"
+                    onClick={() => openBooking('Open')}
+                    className="w-full mt-1 inline-flex items-center justify-center h-10 px-4 rounded-md bg-accent text-primary font-bold text-sm hover:bg-accent/90 transition-colors"
                   >
                     Book a Spot
                   </button>
-                  <p className="text-xs text-center text-muted-foreground mt-2">Reserve with a 50% deposit. Balance due the week of your session.</p>
+                  <p className="text-xs text-center text-muted-foreground mt-2">Full payment required to confirm.</p>
                 </div>
               </CardContent>
             </Card>
 
-            {/* Couples */}
+            {/* 2. Couples */}
             <Card className="border-border hover:shadow-lg transition-all duration-300 hover:border-accent/40 flex flex-col">
               <CardHeader>
                 <div className="w-11 h-11 rounded-lg bg-accent/10 flex items-center justify-center mb-3">
                   <Heart className="w-5 h-5 text-accent" />
                 </div>
-                <CardTitle>Couples Session</CardTitle>
-                <CardDescription>An intimate, extended experience for two, with storytelling prompts and a paired reflection card.</CardDescription>
+                <CardTitle>Couples</CardTitle>
+                <CardDescription>For two people who want to create something together — whether you are celebrating, reconnecting, or simply spending time differently.</CardDescription>
               </CardHeader>
               <CardContent className="flex flex-col flex-1 justify-between gap-6">
                 <ul className="space-y-2 text-sm text-foreground/70">
-                  <li className="flex gap-2"><span className="text-accent">✓</span> Private session for 2</li>
-                  <li className="flex gap-2"><span className="text-accent">✓</span> Guided reflection &amp; storytelling prompts</li>
-                  <li className="flex gap-2"><span className="text-accent">✓</span> Paired keepsake card</li>
-                  <li className="flex gap-2"><span className="text-accent">✓</span> Both kits &amp; materials included</li>
+                  <li className="flex gap-2"><span className="text-accent">✓</span> 2 hour private guided session</li>
+                  <li className="flex gap-2"><span className="text-accent">✓</span> Full kintsugi kit for each person</li>
+                  <li className="flex gap-2"><span className="text-accent">✓</span> Welcome mocktail per person</li>
+                  <li className="flex gap-2"><span className="text-accent">✓</span> Shared grazing board</li>
+                  <li className="flex gap-2"><span className="text-accent">✓</span> A finished piece each to take home</li>
                 </ul>
                 <div>
                   <p className="text-3xl font-bold text-primary mb-1">₦185,000 <span className="text-base font-normal text-muted-foreground">for 2</span></p>
-                  <a href="https://wa.me/2348113993291?text=Hi%2C%20I%27d%20like%20to%20book%20the%20Couples%20Session." target="_blank" rel="noreferrer">
-                    <Button className="w-full mt-3">Book via WhatsApp</Button>
+                  <p className="text-xs text-muted-foreground mb-3">Add-on: Elevated refreshments +₦15,000/person · Off-site +₦80,000</p>
+                  <a href="https://wa.me/2348113993291?text=Hi%2C%20I%27d%20like%20to%20book%20the%20Couples%20session." target="_blank" rel="noreferrer">
+                    <Button className="w-full">Book via WhatsApp</Button>
                   </a>
+                  <p className="text-xs text-center text-muted-foreground mt-2">Full payment required to confirm.</p>
                 </div>
               </CardContent>
             </Card>
 
-            {/* Friendship */}
+            {/* 3. Friendship Date */}
             <Card className="border-border hover:shadow-lg transition-all duration-300 hover:border-accent/40 flex flex-col">
               <CardHeader>
                 <div className="w-11 h-11 rounded-lg bg-accent/10 flex items-center justify-center mb-3">
                   <Sparkles className="w-5 h-5 text-accent" />
                 </div>
                 <CardTitle>Friendship Date</CardTitle>
-                <CardDescription>Relaxed, celebratory, and social. Light refreshments, curated playlist, and a healing conversation to open.</CardDescription>
+                <CardDescription>For your closest people — the ones you want to do something meaningful with, beyond dinner and a movie.</CardDescription>
               </CardHeader>
               <CardContent className="flex flex-col flex-1 justify-between gap-6">
                 <ul className="space-y-2 text-sm text-foreground/70">
-                  <li className="flex gap-2"><span className="text-accent">✓</span> 3–5 people</li>
-                  <li className="flex gap-2"><span className="text-accent">✓</span> Refreshments &amp; curated playlist</li>
-                  <li className="flex gap-2"><span className="text-accent">✓</span> Opening reflection prompt</li>
-                  <li className="flex gap-2"><span className="text-accent">✓</span> All materials included</li>
+                  <li className="flex gap-2"><span className="text-accent">✓</span> 2 hour private guided session</li>
+                  <li className="flex gap-2"><span className="text-accent">✓</span> Full kintsugi kit per person</li>
+                  <li className="flex gap-2"><span className="text-accent">✓</span> Welcome mocktail per person</li>
+                  <li className="flex gap-2"><span className="text-accent">✓</span> Shared grazing platter for the group</li>
+                  <li className="flex gap-2"><span className="text-accent">✓</span> A finished piece each to take home</li>
                 </ul>
                 <div>
-                  <p className="text-3xl font-bold text-primary mb-1">₦75k–₦85k <span className="text-base font-normal text-muted-foreground">/ person</span></p>
-                  <p className="text-xs text-muted-foreground mb-3">Minimum 3 people, from ₦255,000</p>
+                  <p className="text-3xl font-bold text-primary mb-1">₦85,000 <span className="text-base font-normal text-muted-foreground">/ person</span></p>
+                  <p className="text-xs text-muted-foreground mb-1">Minimum 3 people · from ₦255,000</p>
+                  <p className="text-xs text-muted-foreground mb-3">Add-on: Elevated refreshments +₦15,000/person · Off-site +₦80,000</p>
                   <a href="https://wa.me/2348113993291?text=Hi%2C%20I%27d%20like%20to%20book%20a%20Friendship%20Date%20session." target="_blank" rel="noreferrer">
                     <Button className="w-full">Book via WhatsApp</Button>
                   </a>
+                  <p className="text-xs text-center text-muted-foreground mt-2">50% deposit to confirm · balance 5 days before.</p>
                 </div>
               </CardContent>
             </Card>
 
-            {/* Birthday */}
-            <Card className="border-border hover:shadow-lg transition-all duration-300 hover:border-accent/40 flex flex-col">
-              <CardHeader>
-                <div className="w-11 h-11 rounded-lg bg-accent/10 flex items-center justify-center mb-3">
-                  <Flame className="w-5 h-5 text-accent" />
-                </div>
-                <CardTitle>Birthday Package</CardTitle>
-                <CardDescription>Honour the celebrant with a gold-ribbon piece, personalised keepsake card, and a session that feels special.</CardDescription>
-              </CardHeader>
-              <CardContent className="flex flex-col flex-1 justify-between gap-6">
-                <ul className="space-y-2 text-sm text-foreground/70">
-                  <li className="flex gap-2"><span className="text-accent">✓</span> Birthday honoree + guests</li>
-                  <li className="flex gap-2"><span className="text-accent">✓</span> Gold-ribbon distinction for celebrant</li>
-                  <li className="flex gap-2"><span className="text-accent">✓</span> Personalised birthday keepsake card</li>
-                  <li className="flex gap-2"><span className="text-accent">✓</span> Minimum 4 people (honoree + 3)</li>
-                </ul>
-                <div>
-                  <p className="text-3xl font-bold text-primary mb-1">From ₦305,000</p>
-                  <p className="text-xs text-muted-foreground mb-3">Honoree ₦65k · Guests ₦80k each</p>
-                  <a href="https://wa.me/2348113993291?text=Hi%2C%20I%27d%20like%20to%20book%20a%20Birthday%20Package." target="_blank" rel="noreferrer">
-                    <Button className="w-full">Book via WhatsApp</Button>
-                  </a>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Bridal */}
+            {/* 4. Golden Hour */}
             <Card className="border-2 border-accent hover:shadow-xl transition-all duration-300 flex flex-col relative overflow-hidden">
               <div className="absolute top-4 right-4 bg-terra text-terra-foreground text-xs font-bold px-3 py-1 rounded-full">Most Popular</div>
               <CardHeader>
                 <div className="w-11 h-11 rounded-lg bg-accent/20 flex items-center justify-center mb-3">
                   <Gem className="w-5 h-5 text-accent" />
                 </div>
-                <CardTitle>Bridal Shower</CardTitle>
-                <CardDescription>The most intentional bridal experience we know how to give, curated for the bride who wants meaning, not just a moment.</CardDescription>
+                <CardTitle>Golden Hour</CardTitle>
+                <CardDescription>For every milestone worth marking — birthdays, bridal showers, graduations, and any moment that deserves to be celebrated properly.</CardDescription>
               </CardHeader>
               <CardContent className="flex flex-col flex-1 justify-between gap-6">
                 <ul className="space-y-2 text-sm text-foreground/70">
-                  <li className="flex gap-2"><span className="text-accent">✓</span> Bride + party (min. 5 people)</li>
-                  <li className="flex gap-2"><span className="text-accent">✓</span> Gold/rose-gold finish for the bride</li>
-                  <li className="flex gap-2"><span className="text-accent">✓</span> Bridal keepsake card &amp; certificate</li>
-                  <li className="flex gap-2"><span className="text-accent">✓</span> Pre-session release reflection ritual</li>
-                  <li className="flex gap-2"><span className="text-accent">✓</span> Social-media ready workspace styling</li>
+                  <li className="flex gap-2"><span className="text-accent">✓</span> 2.5 hour private guided session</li>
+                  <li className="flex gap-2"><span className="text-accent">✓</span> Full kintsugi kit per person</li>
+                  <li className="flex gap-2"><span className="text-accent">✓</span> Welcome mocktail per person</li>
+                  <li className="flex gap-2"><span className="text-accent">✓</span> Shared grazing platter for the group</li>
+                  <li className="flex gap-2"><span className="text-accent">✓</span> Special distinction for the guest of honour</li>
+                  <li className="flex gap-2"><span className="text-accent">✓</span> A finished piece each to take home</li>
                 </ul>
                 <div>
-                  <p className="text-3xl font-bold text-primary mb-1">₦95,000 <span className="text-base font-normal text-muted-foreground">/ person</span></p>
-                  <p className="text-xs text-muted-foreground mb-3">Minimum 5 people, from ₦475,000</p>
-                  <a href="https://wa.me/2348113993291?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20the%20Bridal%20Shower%20package." target="_blank" rel="noreferrer">
-                    <Button className="w-full">Enquire via WhatsApp</Button>
+                  <p className="text-3xl font-bold text-primary mb-1">₦85,000 <span className="text-base font-normal text-muted-foreground">/ person</span></p>
+                  <p className="text-xs text-muted-foreground mb-1">Minimum 5 people · from ₦425,000</p>
+                  <p className="text-xs text-muted-foreground mb-3">Add-on: Elevated refreshments +₦15,000/person · Catering referral available · Off-site +₦80,000</p>
+                  <a href="https://wa.me/2348113993291?text=Hi%2C%20I%27d%20like%20to%20book%20a%20Golden%20Hour%20session." target="_blank" rel="noreferrer">
+                    <Button className="w-full">Book via WhatsApp</Button>
                   </a>
+                  <p className="text-xs text-center text-muted-foreground mt-2">50% deposit to confirm · balance 5 days before.</p>
                 </div>
               </CardContent>
             </Card>
 
-            {/* Corporate */}
+            {/* 5. Bond Together */}
             <Card className="border-border hover:shadow-lg transition-all duration-300 hover:border-accent/40 flex flex-col">
               <CardHeader>
                 <div className="w-11 h-11 rounded-lg bg-accent/10 flex items-center justify-center mb-3">
                   <Building2 className="w-5 h-5 text-accent" />
                 </div>
-                <CardTitle>Team Bonding / Corporate</CardTitle>
-                <CardDescription>Built around one idea: the cracks in a team aren't weaknesses. They're where the growth happened.</CardDescription>
+                <CardTitle>Bond Together</CardTitle>
+                <CardDescription>For teams and organisations who want to do something genuinely memorable — creative, intentional, and worth talking about long after.</CardDescription>
               </CardHeader>
               <CardContent className="flex flex-col flex-1 justify-between gap-6">
                 <ul className="space-y-2 text-sm text-foreground/70">
-                  <li className="flex gap-2"><span className="text-accent">✓</span> Minimum 6 people</li>
-                  <li className="flex gap-2"><span className="text-accent">✓</span> Philosophy intro: resilience &amp; team culture</li>
-                  <li className="flex gap-2"><span className="text-accent">✓</span> Flat session fee + per-head rate</li>
-                  <li className="flex gap-2"><span className="text-accent">✓</span> Lagos-based, on-site option available</li>
+                  <li className="flex gap-2"><span className="text-accent">✓</span> 2 to 2.5 hour private facilitated session</li>
+                  <li className="flex gap-2"><span className="text-accent">✓</span> Full kintsugi kit per person</li>
+                  <li className="flex gap-2"><span className="text-accent">✓</span> Welcome drink per person</li>
+                  <li className="flex gap-2"><span className="text-accent">✓</span> Light finger food spread for the group</li>
+                  <li className="flex gap-2"><span className="text-accent">✓</span> Kintsugi philosophy intro: resilience &amp; team culture</li>
+                  <li className="flex gap-2"><span className="text-accent">✓</span> Available at our space or yours</li>
                 </ul>
                 <div>
-                  <p className="text-3xl font-bold text-primary mb-1">₦150k <span className="text-base font-normal text-muted-foreground">flat + ₦75k/head</span></p>
-                  <p className="text-xs text-muted-foreground mb-3">Min. engagement ₦600,000</p>
-                  <a href="https://wa.me/2348113993291?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20Team%20Bonding%20for%20my%20company." target="_blank" rel="noreferrer">
+                  <p className="text-3xl font-bold text-primary mb-1">₦150k <span className="text-base font-normal text-muted-foreground">flat + ₦79,500/head</span></p>
+                  <p className="text-xs text-muted-foreground mb-1">Minimum 6 people · from ₦627,000</p>
+                  <p className="text-xs text-muted-foreground mb-3">Add-on: Elevated refreshments +₦15,000/person · Catering referral available · Off-site +₦100,000</p>
+                  <a href="https://wa.me/2348113993291?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20Bond%20Together%20for%20my%20team." target="_blank" rel="noreferrer">
                     <Button className="w-full">Get a Quote</Button>
                   </a>
+                  <p className="text-xs text-center text-muted-foreground mt-2">Full payment required to confirm.</p>
                 </div>
               </CardContent>
             </Card>
 
-            {/* Healing — full width */}
-            <div className="md:col-span-2 xl:col-span-3">
-              <Card className="border-border bg-gradient-to-r from-accent/5 to-accent/10 hover:shadow-lg transition-all duration-300 hover:border-accent/40">
-                <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                  <div>
-                    <div className="w-11 h-11 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
-                      <HeartHandshake className="w-5 h-5 text-accent" />
-                    </div>
-                    <h3 className="text-xl font-bold text-primary mb-2 font-serif">Healing Session</h3>
-                    <p className="text-foreground/70 text-sm leading-relaxed mb-4">
-                      A solo 1:1 or small circle experience designed for people in a season of grief, transition, or burnout. You'll set a healing intention, repair your piece with care, and close with a quiet reflection. Bespoke, unhurried, deeply personal.
-                    </p>
-                    <p className="text-xs text-muted-foreground italic">A mindful craft experience, not a clinical service.</p>
+            {/* 6. Private (Breathe) — full width */}
+            <div className="md:col-span-2 xl:col-span-1">
+              <Card className="border-border bg-gradient-to-br from-accent/5 to-accent/10 hover:shadow-lg transition-all duration-300 hover:border-accent/40 h-full flex flex-col">
+                <CardHeader>
+                  <div className="w-11 h-11 rounded-lg bg-accent/10 flex items-center justify-center mb-3">
+                    <HeartHandshake className="w-5 h-5 text-accent" />
                   </div>
-                  <div className="space-y-4">
-                    <div className="flex justify-between items-center p-4 bg-background rounded-xl border border-border">
+                  <CardTitle>Private</CardTitle>
+                  <CardDescription>No group. No schedule to keep up with. Just you — or your closest few — with all the time and space you need. Bespoke, unhurried, deeply personal.</CardDescription>
+                </CardHeader>
+                <CardContent className="flex flex-col flex-1 justify-between gap-6">
+                  <ul className="space-y-2 text-sm text-foreground/70">
+                    <li className="flex gap-2"><span className="text-accent">✓</span> 2.5 to 3 hour fully private session</li>
+                    <li className="flex gap-2"><span className="text-accent">✓</span> Full kintsugi kit per person</li>
+                    <li className="flex gap-2"><span className="text-accent">✓</span> Styled welcome drink · personal grazing spread</li>
+                    <li className="flex gap-2"><span className="text-accent">✓</span> A small personal touch — a card, a treat</li>
+                    <li className="flex gap-2"><span className="text-accent">✓</span> Completely unhurried pace throughout</li>
+                    <li className="flex gap-2"><span className="text-accent">✓</span> A finished piece to take home</li>
+                  </ul>
+                  <p className="text-xs text-muted-foreground italic">A mindful craft experience, not a clinical service.</p>
+                  <div className="space-y-3">
+                    <div className="flex justify-between items-center p-3 bg-background rounded-xl border border-border">
                       <div>
-                        <p className="font-semibold text-primary text-sm">Solo: 1:1 with Kelly</p>
-                        <p className="text-xs text-muted-foreground">Private, bespoke session</p>
+                        <p className="font-semibold text-primary text-sm">Solo — 1:1 with Kelly</p>
+                        <p className="text-xs text-muted-foreground">Fully private &amp; bespoke</p>
                       </div>
-                      <div className="text-right">
-                        <p className="text-xl font-bold text-primary">₦120,000</p>
-                        <a href="https://wa.me/2348113993291?text=Hi%2C%20I%27d%20like%20to%20book%20a%20Solo%20Healing%20Session." target="_blank" rel="noreferrer">
-                          <Button size="sm" className="mt-2">Book Now</Button>
-                        </a>
-                      </div>
+                      <p className="text-xl font-bold text-primary">₦150,000</p>
                     </div>
-                    <div className="flex justify-between items-center p-4 bg-background rounded-xl border border-border">
+                    <div className="flex justify-between items-center p-3 bg-background rounded-xl border border-border">
                       <div>
-                        <p className="font-semibold text-primary text-sm">Healing Circle (2–3 people)</p>
-                        <p className="text-xs text-muted-foreground">Facilitated by Kelly Praise</p>
+                        <p className="font-semibold text-primary text-sm">Private Group (1–4 people)</p>
+                        <p className="text-xs text-muted-foreground">Off-site +₦80,000</p>
                       </div>
-                      <div className="text-right">
-                        <p className="text-xl font-bold text-primary">₦95,000<span className="text-sm font-normal text-muted-foreground">/person</span></p>
-                        <a href="https://wa.me/2348113993291?text=Hi%2C%20I%27d%20like%20to%20book%20a%20Healing%20Circle%20session." target="_blank" rel="noreferrer">
-                          <Button size="sm" className="mt-2">Book Now</Button>
-                        </a>
-                      </div>
+                      <p className="text-xl font-bold text-primary">₦130,000<span className="text-sm font-normal text-muted-foreground">/person</span></p>
                     </div>
+                    <a href="https://wa.me/2348113993291?text=Hi%2C%20I%27d%20like%20to%20book%20a%20Private%20session." target="_blank" rel="noreferrer">
+                      <Button className="w-full">Book via WhatsApp</Button>
+                    </a>
+                    <p className="text-xs text-center text-muted-foreground">Full payment required to confirm.</p>
                   </div>
-                </div>
+                </CardContent>
               </Card>
             </div>
 
           </div>
 
-          <p className="text-center text-sm text-muted-foreground mt-8">
-            All private packages are reserved with a 50% deposit. The balance is due 48 hours before your session.
-          </p>
+          <div className="mt-10 max-w-2xl mx-auto text-center space-y-2">
+            <p className="text-sm text-muted-foreground">
+              <span className="font-semibold text-primary">Deposits:</span> Open, Couples, Bond Together &amp; Private require full payment. Friendship Date &amp; Golden Hour require a 50% non-refundable deposit, with balance due 5 business days before the session.
+            </p>
+            <p className="text-sm text-muted-foreground">
+              <span className="font-semibold text-primary">Cancellations</span> within 48 hours are non-refundable. Rescheduling requires at least 7 business days' notice. No-shows are billed at the confirmed headcount — your kit can be sent to you, delivery costs apply.
+            </p>
+          </div>
         </div>
       </section>
 
