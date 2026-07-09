@@ -101,21 +101,24 @@ export default function Home() {
     <div className="min-h-screen bg-background text-foreground">
 
       {/* Navigation */}
-      <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-border">
+      <nav className="sticky top-0 z-50 bg-card/95 backdrop-blur border-b border-border">
         <div className="container flex items-center justify-between h-16">
-          <a href="#top" className="text-xl font-bold text-primary font-serif tracking-wide">C&amp;H</a>
+          <div className="flex flex-col leading-tight">
+            <a href="#top" className="text-lg font-bold text-primary font-serif tracking-wide">Cracks &amp; Healing</a>
+            <span className="text-[10px] text-muted-foreground tracking-[0.18em] uppercase hidden md:block">Broken Made Beautiful</span>
+          </div>
 
           <button
             className="md:hidden flex flex-col gap-1.5 p-2"
             onClick={() => setNavOpen(o => !o)}
             aria-label="Toggle navigation"
           >
-            <span className="block w-6 h-0.5 bg-primary" />
-            <span className="block w-6 h-0.5 bg-primary" />
-            <span className="block w-6 h-0.5 bg-primary" />
+            <span className="block w-6 h-0.5 bg-accent" />
+            <span className="block w-6 h-0.5 bg-accent" />
+            <span className="block w-6 h-0.5 bg-accent" />
           </button>
 
-          <div className={`${navOpen ? 'flex' : 'hidden'} md:flex absolute md:relative top-16 md:top-auto left-0 md:left-auto w-full md:w-auto flex-col md:flex-row bg-white md:bg-transparent border-b md:border-0 border-border p-4 md:p-0 gap-6 md:gap-8 shadow-md md:shadow-none`}>
+          <div className={`${navOpen ? 'flex' : 'hidden'} md:flex absolute md:relative top-16 md:top-auto left-0 md:left-auto w-full md:w-auto flex-col md:flex-row bg-card md:bg-transparent border-b md:border-0 border-border p-4 md:p-0 gap-6 md:gap-8 shadow-md md:shadow-none`}>
             <a href="#packages" className="text-sm font-semibold text-muted-foreground hover:text-primary capitalize transition-colors" onClick={() => setNavOpen(false)}>Sessions</a>
             <a href="#shop" className="text-sm font-semibold text-muted-foreground hover:text-primary capitalize transition-colors" onClick={() => setNavOpen(false)}>Shop</a>
             <a href="#contact" className="text-sm font-semibold text-muted-foreground hover:text-primary capitalize transition-colors" onClick={() => setNavOpen(false)}>Contact</a>
@@ -139,24 +142,23 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/10" />
         <div className="relative container pb-16 pt-32">
           <div className="max-w-xl">
-            <div className="inline-block mb-5 px-4 py-1.5 bg-accent/20 backdrop-blur-sm rounded-full text-accent text-sm font-bold border border-accent/30">
-              The Art of Repair
+            <div className="inline-flex items-center gap-2 mb-6 text-accent text-xs font-bold tracking-[0.2em] uppercase">
+              <span className="block w-8 h-px bg-accent" />
+              Kintsugi Workshops &middot; Lagos
+              <span className="block w-8 h-px bg-accent" />
             </div>
             <h1 className="text-5xl lg:text-7xl font-bold text-white mb-5 leading-tight">
-              Cracks &amp; <span className="text-accent">Healing</span>
+              Cracks &amp; <span className="italic text-accent">Healing</span>
             </h1>
-            <p className="text-lg text-white/80 mb-4 leading-relaxed">
-              The Japanese believe that what has been broken and repaired becomes more beautiful for having been broken. We bring that practice to Lagos: kits you use at home and sessions that stay with you.
+            <p className="text-base text-white/75 mb-5 leading-relaxed max-w-md">
+              Broken and repaired becomes more beautiful for having been broken. We bring that practice to Lagos: kits for home, and workshops that stay with you.
             </p>
-            <p className="text-accent font-semibold italic mb-4">
-              "Wholeness doesn't mean no imperfections. It means no part left out."
-            </p>
-            <p className="text-white/60 text-sm mb-8">Sessions run every Saturday, May–November. Spots go fast.</p>
+            <p className="text-white/60 text-sm mb-8 italic">"Wholeness doesn't mean no imperfections. It means no part left out."</p>
             <div className="flex gap-4 flex-wrap">
               <a href="#shop"><Button size="lg">Shop Now</Button></a>
               <button
                 onClick={() => openBooking()}
-                className="inline-flex items-center justify-center h-11 px-8 rounded-md border border-white text-white font-semibold text-sm hover:bg-white hover:text-primary transition-colors"
+                className="inline-flex items-center justify-center h-11 px-8 rounded-md border border-white/70 text-white font-semibold text-sm hover:bg-white hover:text-background transition-colors"
               >
                 Book a Session
               </button>
@@ -166,18 +168,21 @@ export default function Home() {
       </section>
 
       {/* Packages */}
-      <section id="packages" className="py-16 bg-terra/5 border-t border-border">
+      <section id="packages" className="py-16 bg-background border-t border-border">
         <div className="container">
           <div className="max-w-2xl mb-12">
-            <p className="text-xs font-bold text-accent uppercase tracking-widest mb-3">Sessions &amp; Packages</p>
-            <h2 className="text-3xl lg:text-4xl font-bold text-primary mb-3">Every kind of healing, priced honestly.</h2>
+            <div className="flex items-center gap-3 mb-4">
+              <span className="block w-6 h-px bg-accent" />
+              <p className="text-xs font-bold text-accent uppercase tracking-[0.2em]">Sessions &amp; Packages</p>
+            </div>
+            <h2 className="text-3xl lg:text-4xl font-bold text-primary mb-4 italic">Every kind of healing, priced honestly.</h2>
             <p className="text-base text-foreground/70">Whether you're coming alone, with friends, or bringing your whole team, there's a session for you. All packages include materials, expert facilitation, and your take-home piece.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
 
             {/* Open Session */}
-            <Card className="border-border bg-white hover:shadow-lg transition-all duration-300 hover:border-accent/40 flex flex-col">
+            <Card className="border-border hover:shadow-lg transition-all duration-300 hover:border-accent/40 flex flex-col">
               <CardHeader>
                 <div className="w-11 h-11 rounded-lg bg-accent/10 flex items-center justify-center mb-3">
                   <Users className="w-5 h-5 text-accent" />
@@ -208,7 +213,7 @@ export default function Home() {
             </Card>
 
             {/* Couples */}
-            <Card className="border-border bg-white hover:shadow-lg transition-all duration-300 hover:border-accent/40 flex flex-col">
+            <Card className="border-border hover:shadow-lg transition-all duration-300 hover:border-accent/40 flex flex-col">
               <CardHeader>
                 <div className="w-11 h-11 rounded-lg bg-accent/10 flex items-center justify-center mb-3">
                   <Heart className="w-5 h-5 text-accent" />
@@ -233,7 +238,7 @@ export default function Home() {
             </Card>
 
             {/* Friendship */}
-            <Card className="border-border bg-white hover:shadow-lg transition-all duration-300 hover:border-accent/40 flex flex-col">
+            <Card className="border-border hover:shadow-lg transition-all duration-300 hover:border-accent/40 flex flex-col">
               <CardHeader>
                 <div className="w-11 h-11 rounded-lg bg-accent/10 flex items-center justify-center mb-3">
                   <Sparkles className="w-5 h-5 text-accent" />
@@ -259,7 +264,7 @@ export default function Home() {
             </Card>
 
             {/* Birthday */}
-            <Card className="border-border bg-white hover:shadow-lg transition-all duration-300 hover:border-accent/40 flex flex-col">
+            <Card className="border-border hover:shadow-lg transition-all duration-300 hover:border-accent/40 flex flex-col">
               <CardHeader>
                 <div className="w-11 h-11 rounded-lg bg-accent/10 flex items-center justify-center mb-3">
                   <Flame className="w-5 h-5 text-accent" />
@@ -285,7 +290,7 @@ export default function Home() {
             </Card>
 
             {/* Bridal */}
-            <Card className="border-2 border-accent bg-white hover:shadow-xl transition-all duration-300 flex flex-col relative overflow-hidden">
+            <Card className="border-2 border-accent hover:shadow-xl transition-all duration-300 flex flex-col relative overflow-hidden">
               <div className="absolute top-4 right-4 bg-terra text-terra-foreground text-xs font-bold px-3 py-1 rounded-full">Most Popular</div>
               <CardHeader>
                 <div className="w-11 h-11 rounded-lg bg-accent/20 flex items-center justify-center mb-3">
@@ -313,7 +318,7 @@ export default function Home() {
             </Card>
 
             {/* Corporate */}
-            <Card className="border-border bg-white hover:shadow-lg transition-all duration-300 hover:border-accent/40 flex flex-col">
+            <Card className="border-border hover:shadow-lg transition-all duration-300 hover:border-accent/40 flex flex-col">
               <CardHeader>
                 <div className="w-11 h-11 rounded-lg bg-accent/10 flex items-center justify-center mb-3">
                   <Building2 className="w-5 h-5 text-accent" />
@@ -340,7 +345,7 @@ export default function Home() {
 
             {/* Healing — full width */}
             <div className="md:col-span-2 xl:col-span-3">
-              <Card className="border-border bg-gradient-to-r from-primary/5 to-accent/5 hover:shadow-lg transition-all duration-300 hover:border-accent/40">
+              <Card className="border-border bg-gradient-to-r from-accent/5 to-accent/10 hover:shadow-lg transition-all duration-300 hover:border-accent/40">
                 <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                   <div>
                     <div className="w-11 h-11 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
@@ -353,7 +358,7 @@ export default function Home() {
                     <p className="text-xs text-muted-foreground italic">A mindful craft experience, not a clinical service.</p>
                   </div>
                   <div className="space-y-4">
-                    <div className="flex justify-between items-center p-4 bg-white rounded-xl border border-border">
+                    <div className="flex justify-between items-center p-4 bg-background rounded-xl border border-border">
                       <div>
                         <p className="font-semibold text-primary text-sm">Solo: 1:1 with Kelly</p>
                         <p className="text-xs text-muted-foreground">Private, bespoke session</p>
@@ -365,7 +370,7 @@ export default function Home() {
                         </a>
                       </div>
                     </div>
-                    <div className="flex justify-between items-center p-4 bg-white rounded-xl border border-border">
+                    <div className="flex justify-between items-center p-4 bg-background rounded-xl border border-border">
                       <div>
                         <p className="font-semibold text-primary text-sm">Healing Circle (2–3 people)</p>
                         <p className="text-xs text-muted-foreground">Facilitated by Kelly Praise</p>
@@ -391,10 +396,14 @@ export default function Home() {
       </section>
 
       {/* Shop */}
-      <section id="shop" className="py-16 bg-background border-t border-border">
+      <section id="shop" className="py-16 bg-card border-t border-border">
         <div className="container">
           <div className="mb-10">
-            <h2 className="text-3xl lg:text-4xl font-bold text-primary mb-3">Shop Our DIY Kits</h2>
+            <div className="flex items-center gap-3 mb-4">
+              <span className="block w-6 h-px bg-accent" />
+              <p className="text-xs font-bold text-accent uppercase tracking-[0.2em]">Take it home</p>
+            </div>
+            <h2 className="text-3xl lg:text-4xl font-bold text-primary mb-3 italic">Shop Our DIY Kits</h2>
             <p className="text-base text-foreground/70 max-w-2xl">
               Everything you need for up to 3 repairs: non-toxic powder, epoxy glue, brushes, a practice bowl, and a step-by-step manual.
             </p>
@@ -415,7 +424,7 @@ export default function Home() {
               },
             ].map(item => (
               <Card key={item.name} className="overflow-hidden hover:shadow-lg transition-all duration-300">
-                <div className="h-64 overflow-hidden bg-gray-50">
+                <div className="h-64 overflow-hidden bg-muted">
                   <img src={item.img} alt={item.name} className="w-full h-full object-cover" />
                 </div>
                 <CardContent className="pt-5">
@@ -434,14 +443,18 @@ export default function Home() {
       </section>
 
       {/* Testimonials */}
-      <section className="py-16 bg-terra/5 border-t border-border">
+      <section className="py-16 bg-background border-t border-border">
         <div className="container">
-          <h2 className="text-3xl font-bold text-primary mb-2">What Our Community Says</h2>
-          <p className="text-base text-foreground/70 mb-10">100+ customer reviews</p>
+          <div className="flex items-center gap-3 mb-4">
+            <span className="block w-6 h-px bg-accent" />
+            <p className="text-xs font-bold text-accent uppercase tracking-[0.2em]">Community</p>
+          </div>
+          <h2 className="text-3xl font-bold text-primary mb-2 italic">What Our Community Says</h2>
+          <p className="text-sm text-muted-foreground mb-10">100+ reviews from our workshop participants</p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {testimonials.map((t, i) => (
               <Card key={i} className="overflow-hidden">
-                <div className="h-28 overflow-hidden bg-gray-50">
+                <div className="h-28 overflow-hidden bg-muted">
                   <img src={t.img} alt="" className="w-full h-full object-cover" />
                 </div>
                 <CardContent className="pt-5">
@@ -461,12 +474,16 @@ export default function Home() {
       <section id="contact" className="py-16 bg-background border-t border-border">
         <div className="container grid grid-cols-1 lg:grid-cols-2 gap-10">
           <div>
-            <h2 className="text-4xl font-bold text-primary mb-4">Start a Conversation</h2>
+            <div className="flex items-center gap-3 mb-4">
+              <span className="block w-6 h-px bg-accent" />
+              <p className="text-xs font-bold text-accent uppercase tracking-[0.2em]">Get in touch</p>
+            </div>
+            <h2 className="text-4xl font-bold text-primary mb-4 italic">Start a Conversation</h2>
             <p className="text-foreground/70 mb-10">Questions about our kits or sessions? We'd love to hear from you.</p>
             <div className="space-y-6">
               {([
                 { Icon: MapPin, label: 'Location', value: 'Lagos, Nigeria', href: null },
-                { Icon: Mail, label: 'Email', value: 'kellyraise@gmail.com', href: 'mailto:kellyraise@gmail.com' },
+                { Icon: Mail, label: 'Email', value: 'cracksandhealing@gmail.com', href: 'mailto:cracksandhealing@gmail.com' },
                 { Icon: Phone, label: 'WhatsApp', value: '+234 811 399 3291', href: 'https://wa.me/2348113993291' },
               ] as const).map(({ Icon, label, value, href }) => (
                 <div key={label} className="flex gap-4">
@@ -486,7 +503,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="bg-white p-8 rounded-xl border border-border">
+          <div className="bg-card p-8 rounded-xl border border-border">
             <form onSubmit={handleSubmit} className="space-y-5">
               <div>
                 <Label htmlFor="name" className="text-primary font-semibold mb-1.5 block">Full Name</Label>
@@ -510,9 +527,14 @@ export default function Home() {
       </section>
 
       {/* FAQ */}
-      <section id="faq" className="py-16 bg-white border-t border-border">
+      <section id="faq" className="py-16 bg-card border-t border-border">
         <div className="container max-w-3xl mx-auto">
-          <h2 className="text-3xl font-bold text-primary mb-10 text-center">Frequently Asked Questions</h2>
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <span className="block w-6 h-px bg-accent" />
+            <p className="text-xs font-bold text-accent uppercase tracking-[0.2em]">FAQ</p>
+            <span className="block w-6 h-px bg-accent" />
+          </div>
+          <h2 className="text-3xl font-bold text-primary mb-10 text-center italic">Frequently Asked Questions</h2>
           <Accordion type="single" collapsible className="space-y-3">
             {faqs.map((f, i) => (
               <AccordionItem key={i} value={`item-${i}`} className="border border-border rounded-lg px-5">
@@ -531,33 +553,34 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-primary text-primary-foreground py-12">
+      <footer className="py-12 border-t border-border" style={{ background: '#111110', color: '#9e9880' }}>
         <div className="container">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
             <div>
-              <h4 className="font-bold mb-3 font-serif">Cracks & Healing</h4>
-              <p className="text-sm opacity-80">Transforming broken ceramics into beautiful art through the ancient Japanese art of Kintsugi.</p>
+              <h4 className="font-bold mb-3 font-serif text-sm" style={{ color: '#f0ebe1' }}>Cracks &amp; Healing</h4>
+              <p className="text-xs leading-relaxed" style={{ color: '#6e6b5e' }}>Broken made beautiful. Kintsugi workshops and DIY repair kits from Lagos, Nigeria.</p>
+              <p className="text-xs mt-2 italic" style={{ color: '#6e6b5e' }}>Every Saturday · Artzmania, Lekki Phase 1</p>
             </div>
             <div>
-              <h4 className="font-bold mb-3">Quick Links</h4>
-              <ul className="space-y-2 text-sm">
-                {[['packages', 'Sessions'], ['shop', 'Shop'], ['contact', 'Contact'], ['faq', 'FAQ']].map(([id, label]) => (
-                  <li key={id}><a href={`#${id}`} className="opacity-80 hover:opacity-100">{label}</a></li>
+              <h4 className="font-bold mb-3 text-sm" style={{ color: '#f0ebe1' }}>Explore</h4>
+              <ul className="space-y-2 text-xs">
+                {[['packages', 'Sessions & Packages'], ['shop', 'DIY Kits'], ['contact', 'Contact Us'], ['faq', 'FAQ']].map(([id, label]) => (
+                  <li key={id}><a href={`#${id}`} className="hover:text-accent transition-colors" style={{ color: '#6e6b5e' }}>{label}</a></li>
                 ))}
               </ul>
             </div>
             <div>
-              <h4 className="font-bold mb-3">Contact</h4>
-              <ul className="space-y-2 text-sm opacity-80">
+              <h4 className="font-bold mb-3 text-sm" style={{ color: '#f0ebe1' }}>Contact</h4>
+              <ul className="space-y-2 text-xs" style={{ color: '#6e6b5e' }}>
                 <li>Lagos, Nigeria</li>
-                <li><a href="mailto:kellyraise@gmail.com" className="hover:opacity-100">kellyraise@gmail.com</a></li>
-                <li><a href="https://wa.me/2348113993291" className="hover:opacity-100">+234 811 399 3291</a></li>
-                <li><a href="https://www.instagram.com/cracksandhealing/" target="_blank" rel="noreferrer" className="hover:opacity-100">Instagram</a></li>
+                <li><a href="mailto:cracksandhealing@gmail.com" className="hover:text-accent transition-colors" style={{ color: '#6e6b5e' }}>cracksandhealing@gmail.com</a></li>
+                <li><a href="https://wa.me/2348113993291" className="hover:text-accent transition-colors" style={{ color: '#6e6b5e' }}>+234 811 399 3291</a></li>
+                <li><a href="https://www.instagram.com/cracksandhealing/" target="_blank" rel="noreferrer" className="hover:text-accent transition-colors" style={{ color: '#6e6b5e' }}>@cracksandhealing</a></li>
               </ul>
             </div>
           </div>
-          <div className="border-t border-primary-foreground/20 pt-6 text-sm opacity-70 text-center">
-            <p>&copy; {new Date().getFullYear()} Cracks &amp; Healing. All rights reserved.</p>
+          <div className="pt-6 text-xs text-center" style={{ borderTop: '1px solid #2e2c25', color: '#4a4840' }}>
+            <p>&copy; {new Date().getFullYear()} Cracks &amp; Healing &middot; Lagos, Nigeria</p>
           </div>
         </div>
       </footer>

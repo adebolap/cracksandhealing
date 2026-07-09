@@ -4,23 +4,32 @@
 
 @layer base {
   :root {
-    --background: 40 33% 98%;
-    --foreground: 20 20% 12%;
-    --card: 0 0% 100%;
-    --card-foreground: 20 20% 12%;
-    --primary: 213 44% 21%;
-    --primary-foreground: 40 33% 98%;
-    --accent: 38 74% 63%;
-    --accent-foreground: 213 44% 21%;
-    --muted: 30 15% 60%;
-    --muted-foreground: 30 15% 45%;
-    --border: 30 20% 88%;
+    /* Dark canvas palette — matches email template and booking modal */
+    --background: 60 11% 11%;       /* #1e1e18 */
+    --foreground: 42 16% 80%;       /* #d4cfc4 */
+    --card: 60 12% 15%;             /* #2b2b22 */
+    --card-foreground: 42 16% 80%;  /* #d4cfc4 */
+    --primary: 41 33% 91%;          /* #f0ebe1 — warm cream for headings */
+    --primary-foreground: 60 11% 11%; /* dark, for text on primary-bg buttons */
+    --accent: 39 46% 61%;           /* #c9a96e — gold */
+    --accent-foreground: 60 11% 11%;
+    --muted: 49 9% 18%;             /* subtle dark panel */
+    --muted-foreground: 48 13% 56%; /* #9e9880 */
+    --border: 49 11% 20%;           /* #38362d */
+    --input: 49 11% 22%;
+    --ring: 39 46% 61%;             /* gold focus ring */
     --terra: 13 48% 56%;
     --terra-foreground: 40 33% 98%;
+    --radius: 0.375rem;
   }
 
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body { @apply bg-background text-foreground; margin: 0; font-family: Lato, system-ui, sans-serif; }
   h1, h2, h3, h4 { font-family: "Playfair Display", Georgia, serif; }
+
+  /* Inputs on dark backgrounds */
+  input, textarea, select {
+    color-scheme: dark;
+  }
 }
