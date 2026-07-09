@@ -314,7 +314,7 @@ export default function Home() {
             {/* 5. Bond Together */}
             <Card className="border-border hover:shadow-lg transition-all duration-300 hover:border-accent/40 flex flex-col">
               <div className="h-48 overflow-hidden rounded-t-xl">
-                <img src="/teambonding%20pic.jpeg" alt="Bond Together team kintsugi session" className="w-full h-full object-cover object-bottom" />
+                <img src="/teambonding%20pic.jpeg" alt="Bond Together team kintsugi session" className="w-full h-full object-cover object-top" />
               </div>
               <CardHeader>
                 <div className="w-11 h-11 rounded-lg bg-accent/10 flex items-center justify-center mb-3">
