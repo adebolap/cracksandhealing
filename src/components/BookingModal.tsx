@@ -3,14 +3,13 @@ import { X, Loader2 } from 'lucide-react'
 import { toast } from 'sonner'
 
 const PACKAGES = [
-  { name: 'Open Session', price: '₦75,000 / person' },
-  { name: 'Couples Session', price: '₦185,000 for 2' },
-  { name: 'Friendship Date', price: '₦75k–₦85k / person (min 3)' },
-  { name: 'Birthday Package', price: 'From ₦305,000 (min 4)' },
-  { name: 'Bridal Shower', price: '₦95,000 / person (min 5)' },
-  { name: 'Team Bonding', price: '₦150k flat + ₦75k/head' },
-  { name: 'Healing Session (Solo)', price: '₦120,000' },
-  { name: 'Healing Circle', price: '₦95,000 / person (2–3 people)' },
+  { name: 'Open', price: '₦79,500 / person' },
+  { name: 'Couples', price: '₦185,000 for 2' },
+  { name: 'Friendship Date', price: '₦85,000 / person (min 3)' },
+  { name: 'Golden Hour', price: '₦85,000 / person (min 5)' },
+  { name: 'Bond Together', price: '₦150k flat + ₦79,500/head (min 6)' },
+  { name: 'Private — Solo (1:1 with Kelly)', price: '₦150,000' },
+  { name: 'Private — Group (1–4 people)', price: '₦130,000 / person' },
 ]
 
 function getSaturdays(): string[] {
