@@ -216,8 +216,9 @@ export default function Home() {
 
             {/* 2. Couples */}
             <Card className="border-border hover:shadow-lg transition-all duration-300 hover:border-accent/40 flex flex-col">
-              <div className="h-48 overflow-hidden rounded-t-xl">
+              <div className="h-48 overflow-hidden rounded-t-xl relative">
                 <img src="/frienship%20date%203.jpeg" alt="Couples kintsugi session" className="w-full h-full object-cover object-center" />
+                <div className="absolute inset-0 bg-black/30" />
               </div>
               <CardHeader>
                 <div className="w-11 h-11 rounded-lg bg-accent/10 flex items-center justify-center mb-3">
@@ -247,8 +248,9 @@ export default function Home() {
 
             {/* 3. Friendship Date */}
             <Card className="border-border hover:shadow-lg transition-all duration-300 hover:border-accent/40 flex flex-col">
-              <div className="h-48 overflow-hidden rounded-t-xl">
+              <div className="h-48 overflow-hidden rounded-t-xl relative">
                 <img src="/friendship%20date.jpeg" alt="Friendship date kintsugi session" className="w-full h-full object-cover object-center" />
+                <div className="absolute inset-0 bg-black/30" />
               </div>
               <CardHeader>
                 <div className="w-11 h-11 rounded-lg bg-accent/10 flex items-center justify-center mb-3">
@@ -281,6 +283,7 @@ export default function Home() {
             <Card className="border-2 border-accent hover:shadow-xl transition-all duration-300 flex flex-col relative overflow-hidden">
               <div className="h-48 overflow-hidden rounded-t-xl relative">
                 <img src="/friendship%20date%202.jpeg" alt="Golden Hour celebration kintsugi session" className="w-full h-full object-cover object-center" />
+                <div className="absolute inset-0 bg-black/30" />
                 <div className="absolute top-3 right-3 bg-terra text-terra-foreground text-xs font-bold px-3 py-1 rounded-full">Most Popular</div>
               </div>
               <CardHeader>
@@ -313,8 +316,9 @@ export default function Home() {
 
             {/* 5. Bond Together */}
             <Card className="border-border hover:shadow-lg transition-all duration-300 hover:border-accent/40 flex flex-col">
-              <div className="h-48 overflow-hidden rounded-t-xl">
+              <div className="h-48 overflow-hidden rounded-t-xl relative">
                 <img src="/teambonding%20pic.jpeg" alt="Bond Together team kintsugi session" className="w-full h-full object-cover object-top" />
+                <div className="absolute inset-0 bg-black/30" />
               </div>
               <CardHeader>
                 <div className="w-11 h-11 rounded-lg bg-accent/10 flex items-center justify-center mb-3">
@@ -347,8 +351,9 @@ export default function Home() {
             {/* 6. Private (Breathe) — full width */}
             <div className="md:col-span-2 xl:col-span-1">
               <Card className="border-border bg-gradient-to-br from-accent/5 to-accent/10 hover:shadow-lg transition-all duration-300 hover:border-accent/40 h-full flex flex-col">
-                <div className="h-48 overflow-hidden rounded-t-xl">
+                <div className="h-48 overflow-hidden rounded-t-xl relative">
                   <img src="/private%20session.jpeg" alt="Private kintsugi session" className="w-full h-full object-cover object-center" />
+                  <div className="absolute inset-0 bg-black/30" />
                 </div>
                 <CardHeader>
                   <div className="w-11 h-11 rounded-lg bg-accent/10 flex items-center justify-center mb-3">
