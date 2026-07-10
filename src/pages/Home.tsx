@@ -62,12 +62,12 @@ const openImages = [
 ]
 
 const couplesImages = [
-  { src: '/frienship%20date%203.jpeg', alt: 'Couples kintsugi session' },
   { src: '/couple-session-2.jpeg', alt: 'A couple gluing their kintsugi bowls together' },
 ]
 
 const friendshipImages = [
   { src: '/friendship%20date.jpeg', alt: 'Friendship date kintsugi session' },
+  { src: '/frienship%20date%203.jpeg', alt: 'Two friends holding their finished kintsugi bowls' },
   { src: '/friends-quotes.jpeg', alt: 'A group of friends holding their finished kintsugi bowls' },
 ]
 
@@ -78,7 +78,7 @@ const goldenHourImages = [
 ]
 
 const bondTogetherImages = [
-  { src: '/teambonding-pic-2.jpeg', alt: 'Bond Together team kintsugi session', imgClassName: 'object-cover object-[center_32%]' },
+  { src: '/teambonding-pic-2.jpeg', alt: 'Bond Together team kintsugi session', imgClassName: 'object-cover object-[center_47%]' },
   { src: '/team-bonding-2.jpeg', alt: 'A large team celebrating together after their session', imgClassName: 'object-cover object-top' },
 ]
 
