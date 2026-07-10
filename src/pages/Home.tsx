@@ -78,8 +78,8 @@ const goldenHourImages = [
 ]
 
 const bondTogetherImages = [
-  { src: '/teambonding%20pic.jpeg', alt: 'Bond Together team kintsugi session' },
-  { src: '/team-bonding-2.jpeg', alt: 'A large team celebrating together after their session' },
+  { src: '/teambonding-pic-2.png', alt: 'Bond Together team kintsugi session', imgClassName: 'object-cover object-[center_32%]' },
+  { src: '/team-bonding-2.jpeg', alt: 'A large team celebrating together after their session', imgClassName: 'object-cover object-top' },
 ]
 
 const privateImages = [
@@ -341,7 +341,7 @@ export default function Home() {
 
             {/* 5. Bond Together */}
             <Card className="border-border hover:shadow-lg transition-all duration-300 hover:border-accent/40 flex flex-col">
-              <PackageCarousel images={bondTogetherImages} imgClassName="object-cover object-top" />
+              <PackageCarousel images={bondTogetherImages} />
               <CardHeader>
                 <div className="w-11 h-11 rounded-lg bg-accent/10 flex items-center justify-center mb-3">
                   <Building2 className="w-5 h-5 text-accent" />
