@@ -78,7 +78,7 @@ const goldenHourImages = [
 ]
 
 const bondTogetherImages = [
-  { src: '/teambonding-pic-2.png', alt: 'Bond Together team kintsugi session', imgClassName: 'object-cover object-[center_32%]' },
+  { src: '/teambonding-pic-2.jpeg', alt: 'Bond Together team kintsugi session', imgClassName: 'object-cover object-[center_32%]' },
   { src: '/team-bonding-2.jpeg', alt: 'A large team celebrating together after their session', imgClassName: 'object-cover object-top' },
 ]
 
