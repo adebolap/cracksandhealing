@@ -4,6 +4,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react'
 interface PackageCarouselImage {
   src: string
   alt: string
+  imgClassName?: string
 }
 
 interface PackageCarouselProps {
@@ -41,7 +42,7 @@ export default function PackageCarousel({
           key={img.src}
           src={img.src}
           alt={img.alt}
-          className={`absolute inset-0 w-full h-full transition-opacity duration-700 ${imgClassName} ${i === index ? 'opacity-100' : 'opacity-0'}`}
+          className={`absolute inset-0 w-full h-full transition-opacity duration-700 ${img.imgClassName ?? imgClassName} ${i === index ? 'opacity-100' : 'opacity-0'}`}
         />
       ))}
       <div className="absolute inset-0 bg-black/30 pointer-events-none" />
