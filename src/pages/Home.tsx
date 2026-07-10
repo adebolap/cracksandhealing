@@ -8,6 +8,7 @@ import { Textarea } from '@/components/ui/textarea'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
 import { Mail, Phone, MapPin, Star, Sparkles, Heart, Users, MessageCircle, Gem, HeartHandshake, Building2 } from 'lucide-react'
 import BookingModal from '@/components/BookingModal'
+import PackageCarousel from '@/components/ui/package-carousel'
 
 const testimonials = [
   {
@@ -53,6 +54,36 @@ const faqs = [
     q: 'What payment methods do you accept?',
     a: 'Credit/debit cards (Visa, Mastercard) and bank transfers via Paystack. Open, Couples, Bond Together, and Private sessions require full payment to confirm. Friendship Date and Golden Hour require a 50% non-refundable deposit, with the balance due 5 business days before your session.',
   },
+]
+
+const openImages = [
+  { src: '/solo%20session.jpeg', alt: 'Open kintsugi session' },
+  { src: '/friends-quotes.jpeg', alt: 'Guests holding finished kintsugi bowls at an open session' },
+]
+
+const couplesImages = [
+  { src: '/frienship%20date%203.jpeg', alt: 'Couples kintsugi session' },
+  { src: '/couple-session-2.jpeg', alt: 'A couple gluing their kintsugi bowls together' },
+]
+
+const friendshipImages = [
+  { src: '/friendship%20date.jpeg', alt: 'Friendship date kintsugi session' },
+  { src: '/friends-quotes.jpeg', alt: 'A group of friends holding their finished kintsugi bowls' },
+]
+
+const goldenHourImages = [
+  { src: '/friendship%20date%202.jpeg', alt: 'Golden Hour celebration kintsugi session' },
+  { src: '/bridal-shower-boxes.jpeg', alt: 'Bridal shower gift table set with Kelly Praise kits' },
+  { src: '/bridal-shower-group.jpeg', alt: 'Bridal shower group photo with the bride-to-be' },
+]
+
+const bondTogetherImages = [
+  { src: '/teambonding%20pic.jpeg', alt: 'Bond Together team kintsugi session' },
+  { src: '/team-bonding-2.jpeg', alt: 'A large team celebrating together after their session' },
+]
+
+const privateImages = [
+  { src: '/private%20session.jpeg', alt: 'Private kintsugi session' },
 ]
 
 export default function Home() {
@@ -184,6 +215,7 @@ export default function Home() {
 
             {/* 1. Open */}
             <Card className="border-border hover:shadow-lg transition-all duration-300 hover:border-accent/40 flex flex-col">
+              <PackageCarousel images={openImages} />
               <CardHeader>
                 <div className="w-11 h-11 rounded-lg bg-accent/10 flex items-center justify-center mb-3">
                   <Users className="w-5 h-5 text-accent" />
@@ -216,10 +248,7 @@ export default function Home() {
 
             {/* 2. Couples */}
             <Card className="border-border hover:shadow-lg transition-all duration-300 hover:border-accent/40 flex flex-col">
-              <div className="h-48 overflow-hidden rounded-t-xl relative">
-                <img src="/frienship%20date%203.jpeg" alt="Couples kintsugi session" className="w-full h-full object-cover object-center" />
-                <div className="absolute inset-0 bg-black/30" />
-              </div>
+              <PackageCarousel images={couplesImages} />
               <CardHeader>
                 <div className="w-11 h-11 rounded-lg bg-accent/10 flex items-center justify-center mb-3">
                   <Heart className="w-5 h-5 text-accent" />
@@ -248,10 +277,7 @@ export default function Home() {
 
             {/* 3. Friendship Date */}
             <Card className="border-border hover:shadow-lg transition-all duration-300 hover:border-accent/40 flex flex-col">
-              <div className="h-48 overflow-hidden rounded-t-xl relative">
-                <img src="/friendship%20date.jpeg" alt="Friendship date kintsugi session" className="w-full h-full object-cover object-center" />
-                <div className="absolute inset-0 bg-black/30" />
-              </div>
+              <PackageCarousel images={friendshipImages} />
               <CardHeader>
                 <div className="w-11 h-11 rounded-lg bg-accent/10 flex items-center justify-center mb-3">
                   <Sparkles className="w-5 h-5 text-accent" />
@@ -281,11 +307,10 @@ export default function Home() {
 
             {/* 4. Golden Hour */}
             <Card className="border-2 border-accent hover:shadow-xl transition-all duration-300 flex flex-col relative overflow-hidden">
-              <div className="h-48 overflow-hidden rounded-t-xl relative">
-                <img src="/friendship%20date%202.jpeg" alt="Golden Hour celebration kintsugi session" className="w-full h-full object-cover object-center" />
-                <div className="absolute inset-0 bg-black/30" />
-                <div className="absolute top-3 right-3 bg-terra text-terra-foreground text-xs font-bold px-3 py-1 rounded-full">Most Popular</div>
-              </div>
+              <PackageCarousel
+                images={goldenHourImages}
+                badge={<div className="absolute top-3 right-3 z-10 bg-terra text-terra-foreground text-xs font-bold px-3 py-1 rounded-full">Most Popular</div>}
+              />
               <CardHeader>
                 <div className="w-11 h-11 rounded-lg bg-accent/20 flex items-center justify-center mb-3">
                   <Gem className="w-5 h-5 text-accent" />
@@ -316,10 +341,7 @@ export default function Home() {
 
             {/* 5. Bond Together */}
             <Card className="border-border hover:shadow-lg transition-all duration-300 hover:border-accent/40 flex flex-col">
-              <div className="h-48 overflow-hidden rounded-t-xl relative">
-                <img src="/teambonding%20pic.jpeg" alt="Bond Together team kintsugi session" className="w-full h-full object-cover object-top" />
-                <div className="absolute inset-0 bg-black/30" />
-              </div>
+              <PackageCarousel images={bondTogetherImages} imgClassName="object-cover object-top" />
               <CardHeader>
                 <div className="w-11 h-11 rounded-lg bg-accent/10 flex items-center justify-center mb-3">
                   <Building2 className="w-5 h-5 text-accent" />
@@ -351,10 +373,7 @@ export default function Home() {
             {/* 6. Private (Breathe) — full width */}
             <div className="md:col-span-2 xl:col-span-1">
               <Card className="border-border bg-gradient-to-br from-accent/5 to-accent/10 hover:shadow-lg transition-all duration-300 hover:border-accent/40 h-full flex flex-col">
-                <div className="h-48 overflow-hidden rounded-t-xl relative">
-                  <img src="/private%20session.jpeg" alt="Private kintsugi session" className="w-full h-full object-cover object-center" />
-                  <div className="absolute inset-0 bg-black/30" />
-                </div>
+                <PackageCarousel images={privateImages} />
                 <CardHeader>
                   <div className="w-11 h-11 rounded-lg bg-accent/10 flex items-center justify-center mb-3">
                     <HeartHandshake className="w-5 h-5 text-accent" />
