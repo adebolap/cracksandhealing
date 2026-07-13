@@ -206,7 +206,7 @@ export default function Home() {
               <span className="block w-6 h-px bg-accent" />
               <p className="text-xs font-bold text-accent uppercase tracking-[0.2em]">Sessions &amp; Packages</p>
             </div>
-            <h2 className="text-3xl lg:text-4xl font-bold text-primary mb-3 italic">Every kind of healing, priced honestly.</h2>
+            <h2 className="text-3xl lg:text-4xl font-bold text-primary mb-3 italic">Every kind of session, priced honestly.</h2>
             <p className="text-base text-foreground/60 italic mb-3">For anyone who wants to slow down, make something beautiful, and leave with a piece that is entirely their own.</p>
             <p className="text-base text-foreground/70">Whether you're coming alone, with friends, or bringing your whole team, there's a session for you. All packages include materials, expert facilitation, and your take-home piece.</p>
           </div>
